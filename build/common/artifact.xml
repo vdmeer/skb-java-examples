@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="artifact-common" xmlns:ivy="antlib:org.apache.ivy.ant" xmlns:if="ant:if">
+
+	<!-- Main targets -->
+	<target name="javadoc-all" depends="ivy.init, resolve.compile, src.init" if="src.exists" description="Creates javadoc documentation for all classes (vis:private, common).">
+		<java-doc input.dir="${main.java.dir}" output.dir="${javadoc-all.output.dir}" classpath.id="compile.classpath" access="private"/>
+	</target>
+
+	<target name="javadoc-api" depends="ivy.init, resolve.compile, src.init" if="src.exists" description="Creates javadoc documentation for all classes (vis:protected, common).">
+		<java-doc input.dir="${main.java.dir}" output.dir="${javadoc-api.output.dir}" classpath.id="compile.classpath" access="protected" exclude.package.names="${javadoc.exclude.package.names}"/>
+	</target>
+
+	<target name="javadoc-bundle" depends="ivy.init, resolve.compile, src.init" if="src.exists" description="Creates javadoc documentation for bundle classes (common).">
+		<delete dir="${javadoc-bundle.output.dir}" quiet="true"/>
+		<mkdir dir="${javadoc-bundle.output.dir}"/>
+
+		<path id="global.path">
+			<fileset dir="${ivy.cache.dir}" erroronmissingdir="false">
+				<exclude name="**/*-sources-*.jar"/>
+				<include name="**/*.jar"/>
+			</fileset>
+		</path>
+		<java-doc input.dir="${main.java.dir}" output.dir="${javadoc-bundle.output.dir}" classpath.id="global.path" access="public" exclude.package.names="${javadoc.exclude.package.names}"/>
+	</target>
+
+	<target name="jar" depends="ivy.init, resolve.compile, compile.init, jar.init" description="Creates a JAR file containing the output of a compilation of the source tree (common).">
+		<delete quiet="true" file="${ivy.output.file}"/>
+		<mkdir dir="${ivy.output.dir}"/>
+		<delete quiet="true" file="${jar.output.file}"/>
+		<mkdir dir="${jar.output.dir}"/>
+		<delete quiet="true" file="${source-jar.output.file}"/>
+		<mkdir dir="${source-jar.output.dir}"/>
+
+		<compile classpath.id="compile.classpath" input.dir="${main.java.dir}" output.dir="${main.output.dir}" resources.dir="${main.resources.dir}"/>
+
+		<dist-text-files/>
+
+		<jar destfile="${jar.output.file}" basedir="${main.output.dir}" index="true" filesetmanifest="merge">
+			<manifest>
+				<attribute name="Built-By" value="${manifest.buildby}"/>
+				<attribute name="Implementation-Title" value="${implementation.title}"/>
+				<attribute name="Implementation-Version" value="${implementation.version}"/>
+			</manifest>
+		</jar>
+
+		<jar destfile="${source-jar.output.file}" basedir="${main.java.dir}" index="true">
+			<fileset dir="${main.java.dir}/../resources" erroronmissingdir="false"/>
+		</jar>
+
+		<jar destfile="${javadoc-jar.output.file}" basedir="${javadoc-bundle.output.dir}" index="true"></jar>
+
+		<ivy:publish resolver="integration" pubdate="${timestamp}" status="${release.type}" overwrite="true">
+			<artifacts pattern="${ivy.output.dir}/[artifact].[ext]"/>
+<!--
+			
+			<artifacts pattern="${jar.output.dir}/[artifact].[ext]"/>
+			<artifacts pattern="${source-jar.output.dir}/[artifact].[ext]"/>
+			<artifacts pattern="${javadoc-jar.output.dir}/[artifact].[ext]"/>
+-->
+		</ivy:publish>
+	</target>
+
+
+	<target name="jar-complete" depends="resolve.compile, jar" description="Creates a JAR file containing all bundle classes plus all external dependencies (common).">
+<!--
+		<pathconvert property="my.classpath" pathsep=" ">
+			<mapper>
+				<chainedmapper>
+					<flattenmapper />
+					<globmapper from="*" to="lib/*" />
+				</chainedmapper>
+			</mapper>
+			<path refid="runtime.classpath"/>
+		</pathconvert>
+-->
+
+		 <jar destfile="${jar.output.complete.file}" basedir="${main.output.dir}" index="true">
+			<restrict>
+				<archives>
+					<zips>
+						<path refid="compile.classpath"/>
+					</zips>
+				</archives>
+			</restrict>
+
+			<manifest>
+				<attribute name="Built-By" value="${manifest.buildby}"/>
+				<attribute name="Main-Class" value="${manifest.mainclass}"/>
+<!--
+				<attribute name="Class-Path" value="${jar.ext.classpath}"/>
+-->
+			</manifest>
+		</jar>
+	</target>
+
+	<!-- Other targets -->
+	<target name="compile.init" depends="ivy.init"/>
+
+	<target name="jar.init">
+		<fail message="The 'integration.repo.dir' property must be set on this project.">
+			<condition>
+				<not>
+					<isset property="integration.repo.dir"/>
+				</not>
+			</condition>
+		</fail>
+		<fail message="The 'ivy.cache.dir' property must be set on this project.">
+			<condition>
+				<not>
+					<isset property="ivy.cache.dir"/>
+				</not>
+			</condition>
+		</fail>
+		<fail message="The 'version' property must be set on this project.">
+			<condition>
+				<not>
+					<isset property="version"/>
+				</not>
+			</condition>
+		</fail>
+	</target>
+
+	<target name="javadoc.prep" depends="src.init" if="src.exists">
+		<mkdir dir="${javadoc.prep.dir}"/>
+		<copy todir="${javadoc.prep.dir}">
+			<fileset dir="${main.java.dir}" erroronmissingdir="false"/>
+		</copy>
+	</target>
+
+</project>

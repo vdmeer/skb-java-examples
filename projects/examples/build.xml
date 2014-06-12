@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="skb-examples" xmlns:ivy="antlib:org.apache.ivy.ant" default="jar">
+	<property environment="env"/>
+
+	<property file="${env.PROJECT_HOME}/build/build.versions"/>
+	<property name="version" value="${skb.examples}"/>
+
+	<property name="ivy.pom.name" value="${publish.org.name}:${ant.project.name}"/>
+	<property name="ivy.pom.description" value="Examples for the skb-java sub projects."/>
+	<property name="ivy.pom.url" value="https://github.com/vdmeer/skb-java-examples"/>
+
+	<property file="${env.PROJECT_HOME}/build/build.properties"/>
+
+	<property name="package.dist.readme.file" value="${env.PROJECT_HOME}/projects/examples/README"/>
+	<property name="package.dist.changelog.file" value="${env.PROJECT_HOME}/projects/examples/CHANGELOG"/>
+
+	<import file="${env.PROJECT_HOME}/build/project/project.xml"/>
+	<import file="${env.PROJECT_HOME}/build/package/package-bundle.xml"/>
+
+	<import file="${env.PROJECT_HOME}/build/standard/default.xml"/>
+
+	<target name="prepare" description="Prepares the project for building (jar)" depends="textfiles"/>
+
+	<target name="textfiles">
+		<asciidoc filename="${env.PROJECT_HOME_CYG}/projects/examples/README.asciidoc" />
+		<asciidoc filename="${env.PROJECT_HOME_CYG}/projects/examples/CHANGELOG.asciidoc" />
+	</target>
+</project>

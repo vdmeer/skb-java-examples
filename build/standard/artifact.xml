@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="artifact-standard" xmlns:ivy="antlib:org.apache.ivy.ant">
+
+	<import file="common.xml"/>
+	<import file="../common/artifact.xml"/>
+
+	<!-- Other targets -->
+	<target name="compile.init" depends="ivy.init">
+		<ivy:cachepath resolveId="ecj.classpath" pathid="ecj.classpath" organisation="org.eclipse.jdt.core.compiler"
+				module="ecj" revision="${org.eclipse.jdt.core.compiler.ecj.version}"
+				conf="default" type="jar" inline="true" log="download-only"/>
+
+		<taskdef name="javac" classname="org.apache.tools.ant.taskdefs.Javac" uri="standard.artifact.compile">
+			<classpath>
+				<path refid="ecj.classpath"/>
+			</classpath>
+		</taskdef>
+	</target>
+
+</project>

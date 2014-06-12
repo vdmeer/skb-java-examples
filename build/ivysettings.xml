@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ivysettings>
+
+	<settings defaultResolver="external-lookup" defaultLatestStrategy="latest-lexico"/>
+
+	<caches resolutionCacheDir="${ivy.cache.dir}/resolution" repositoryCacheDir="${ivy.cache.dir}/repository"
+			ivyPattern="[organisation]/[module]/[revision]/[artifact]-[revision].[ext]"
+			artifactPattern="[organisation]/[module]/[revision]/[artifact]-[revision].[ext]"
+			useOrigin="true"/>
+
+	<macrodef name="localrepo">
+		<filesystem descriptor="required" local="false">
+			<ivy pattern="${local.repo.dir}/[organisation]/[module]/[revision]/[artifact]-[revision].[ext]"/>
+			<artifact pattern="${local.repo.dir}/[organisation]/[module]/[revision]/[artifact]-[revision].[ext]"/>
+		</filesystem>
+	</macrodef>
+
+	<resolvers>
+		<!-- Integration repositories -->
+		<filesystem name="integration" descriptor="required">
+			<ivy pattern="${integration.repo.dir}/[organisation]/[module]/[revision]/[artifact]-[revision].[ext]"/>
+			<artifact pattern="${integration.repo.dir}/[organisation]/[module]/[revision]/[artifact]-[revision].[ext]"/>
+		</filesystem>
+
+		<!-- Lookup repositories -->
+		<chain name="external-lookup" returnFirst="true">
+			<!-- Should Integration be here - depends on what you are upto -->
+			<resolver ref="integration"/>
+			<localrepo name="local-external-repository"/>
+
+			<ibiblio name="maven2" m2compatible="true" root="http://repo1.maven.org/maven2/" pattern="[organisation]/[module]/[revision]/[artifact]-[revision].[ext]"/>
+		</chain>
+
+		<!-- Publishing repositories -->
+		<localrepo name="local-bundle-publish"/>
+		<localrepo name="local-library-publish"/>
+	</resolvers>
+
+</ivysettings>
