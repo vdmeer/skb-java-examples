@@ -33,11 +33,14 @@
 		<mkdir dir="${pom.output.dir}"/>
 
 		<ivy:makepom ivyfile="${ivy.output.file}" pomfile="${pom.output.file}" templatefile="${env.PROJECT_HOME}/build/pom.template">
+			<mapping conf="*" scope="compile"/>
+<!--
 			<mapping conf="compile" scope="compile"/>
 			<mapping conf="provided" scope="provided"/>
 			<mapping conf="dm-server-provided" scope="provided"/>
 			<mapping conf="runtime" scope="runtime"/>
 			<mapping conf="test" scope="test"/>
+-->
 		</ivy:makepom>
 	</target>
 

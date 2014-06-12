@@ -2,12 +2,12 @@
 skb.examples=0.0.1
 
 ################[ SKB Packages as EXTERNALS ]###############
-skb.base=0.0.1
+skb.base=0.0.2
 skb.composite=0.0.1
-skb.categories=0.0.1
+skb.categories=0.0.2
 skb.configuration=0.0.1
-skb.asciitable=0.0.1
-skb.execs=0.0.1
+skb.asciitable=0.0.2
+skb.execs=0.0.2
 skb.collections=0.0.1
 skb.commons=0.0.1
 

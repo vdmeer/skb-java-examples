@@ -5,6 +5,8 @@
 	<property file="${env.PROJECT_HOME}/build/build.versions"/>
 	<property name="version" value="${skb.examples}"/>
 
+	<property name="manifest.mainclass" value="de.vandermeer.skb.execs.Skb_Exec"/>
+
 	<property name="ivy.pom.name" value="${publish.org.name}:${ant.project.name}"/>
 	<property name="ivy.pom.description" value="Examples for the skb-java sub projects."/>
 	<property name="ivy.pom.url" value="https://github.com/vdmeer/skb-java-examples"/>
