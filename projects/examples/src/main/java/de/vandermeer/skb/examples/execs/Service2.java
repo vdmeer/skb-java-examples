@@ -36,7 +36,7 @@ public class Service2 implements Skb_Executable {
 				System.out.println("Hallo, hier ist service zwei.");
 				break;
 			case "-f":
-				System.out.println("Bonjour, c'est service deux.");
+				System.out.println("Bonjour, ceci est le service deux.");
 				break;
 			case "-e":
 				System.out.println("Hi, this is service two.");
@@ -52,6 +52,7 @@ public class Service2 implements Skb_Executable {
 	public void serviceHelpScreen() {
 		System.out.println("Service2 help:");
 		System.out.println("- this is a simple service called Service2");
+
 		System.out.println("-g for a German greeting");
 		System.out.println("-e for an English greeting");
 		System.out.println("-f for a French greeting");
