@@ -27,4 +27,25 @@
 		<asciidoc filename="${env.PROJECT_HOME_CYG}/projects/examples/README.asciidoc" />
 		<asciidoc filename="${env.PROJECT_HOME_CYG}/projects/examples/CHANGELOG.asciidoc" />
 	</target>
+
+
+	<property name="skb-examples.dir" value="${project.demos.home}/examples" />
+
+	<target name="deploy-demos" depends="copy-ext-jars">
+		<mkdir dir="${skb-examples.dir}/bin/bat"/>
+		<mkdir dir="${skb-examples.dir}/bin/cyg"/>
+		<mkdir dir="${skb-examples.dir}/bin/sh"/>
+
+		<copy todir="${skb-examples.dir}/lib/java">
+			<fileset dir="${env.PROJECT_HOME}/projects/examples/target/ext/lib">
+				<include name="*.jar"/>
+			</fileset>
+		</copy>
+
+		<copy todir="${skb-examples.dir}/lib/java" file="${env.PROJECT_HOME}/build/target/package-expanded/${natural.name}-${skb.examples}/dist/skb-examples-${skb.examples}.jar" />
+
+		<!-- run script and mass-start of components -->
+		<create-script template.file.bat="run.bat" template.file.sh="run.sh" template.dir="${env.PROJECT_HOME}/projects/examples/templates" dest.dir="${skb-examples.dir}" dest.file="run" demo.home.dir.dos="${env.PROJECT_HOME_DOS}/demos/examples" demo.home.dir.cyg="${env.PROJECT_HOME_CYG}/demos/examples" />
+	</target>
+
 </project>

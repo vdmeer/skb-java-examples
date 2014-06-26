@@ -19,11 +19,11 @@
 	<dependencies>
 
 		<dependency org="de.vandermeer" name="skb-execs" rev="${skb.execs}"/>
+		<dependency org="de.vandermeer" name="skb-asciitable" rev="${skb.asciitable}"/>
 
 <!--
 		<dependency org="de.vandermeer" name="skb-base" rev="${skb.base}"/>
 		<dependency org="de.vandermeer" name="skb-collections" rev="${skb.collections}"/>
-		<dependency org="de.vandermeer" name="skb-commons" rev="${skb.commons}"/>
 -->
 
 		<dependency org="junit" name="junit" rev="${org.junit}" conf="test->runtime" />
