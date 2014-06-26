@@ -9,7 +9,7 @@ set prj_home=`(cd ..;pwd)`
 if ( "$system" == "Cygwin" ) then
 	setenv PROJECT_HOME "/"`echo $prj_home | cut -d/ -f4-`
 	setenv PROJECT_HOME_CYG ${prj_home}
-	setenv PROJECT_HOME_DOS `cygpath -t windows ${prj_home}`
+	setenv PROJECT_HOME_DOS `cygpath -m ${prj_home}`
 	setenv IVY_HOME ${PROJECT_HOME_DOS}
 	setenv ASCII_DOC_EXEC ${PROJECT_HOME_DOS}/build/bin/asciidoc.bat
 else

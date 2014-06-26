@@ -1,22 +1,22 @@
 ################[ SKB Examples ]###############
-skb.examples=0.0.1
+skb.examples=0.0.3
 
 ################[ SKB Packages as EXTERNALS ]###############
-skb.base=0.0.2
-skb.composite=0.0.1
-skb.categories=0.0.2
-skb.configuration=0.0.1
-skb.asciitable=0.0.2
-skb.execs=0.0.2
-skb.collections=0.0.1
-skb.commons=0.0.1
+skb.base=0.0.3
+skb.composite=0.0.3
+skb.categories=0.0.3
+skb.configuration=0.0.3
+skb.asciitable=0.0.3
+skb.execs=0.0.3
+skb.collections=0.0.3
+skb.commons=0.0.3
 
-skb.dsl=0.0.1
-skb.tribe=0.0.1
+#skb.dsl=0.0.1
+#skb.tribe=0.0.1
 
-skb.dal=0.0.1
+#skb.dal=0.0.1
 
-skb.svg2vector=1.0.1
+#skb.svg2vector=1.0.1
 
 ##########[ External Dependencies Packages ]#########
 org.junit=4.11

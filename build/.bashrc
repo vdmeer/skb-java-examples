@@ -15,7 +15,7 @@ prj_home=`(cd ..;pwd)`
 if [ "$system" == "Cygwin" ] ; then
 	export PROJECT_HOME="/"`echo $prj_home | cut -d/ -f4-`
 	export PROJECT_HOME_CYG=${prj_home}
-	export PROJECT_HOME_DOS=`cygpath -t windows ${prj_home}`
+	export PROJECT_HOME_DOS=`cygpath -m ${prj_home}`
 	export IVY_HOME=${PROJECT_HOME_DOS}
 	export ASCII_DOC_EXEC=${PROJECT_HOME_DOS}/build/bin/asciidoc.bat
 else
