@@ -1,4 +1,11 @@
 skb-java-examples
 =================
 
+[NOTE]
+Links are given as _golum_ and _html_.
+_golum_ links refer to an ASCIIDOC file and will be rendered on Github or other Golum based systems, plain text otherwise.
+_html_ links refer to an HTML file and will be rendered by your browser, except on Github you'll see the source.
+
 Examples for the skb-java sub projects.
+A detailed description of the examples is here
+link:projects/examples/README.asciidoc[golum] / link:projects/examples/README.html[html].
