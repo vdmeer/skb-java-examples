@@ -1,0 +1,33 @@
+SKB Java Examples
+-----------------
+
+A few examples on how to use several packages of the SKB-JAVA port. Most examples will run from
+command line using the Skb_Executable interface and the Skb_Exec service.
+
+
+execs.Service1
+~~~~~~~~~~~~~~
+A simple service implementing the Skb_Executable interface. It just prints a line and returns.
+
+
+execs.Service2
+~~~~~~~~~~~~~~
+A simple service implementing the Skb_Executable interface. It can be called with different
+command line options for printing text in several languages, then it will exit.
+
+
+ConsoleTable
+~~~~~~~~~~~~
+Implements the Skb_Executable interface with several options. Each option prints two ASCII tables using
+the skb-asciitable package in a particular format. This example shows how to use several command line
+options with the Skb_Exec service and how to use the SKB ASCII table.
+
+This example requires full UTF-8 support (compile, execute, console). For details on how to get the UTF-8 characters
+printed properly in several environments please see 
+http://vdmeer-sven.blogspot.ie/2014/06/utf-8-support-w-java-and-console.html[blog] and
+https://github.com/vdmeer/skb/wiki/HowTo-UTF-8-Support-in-Java-and-Console[SKB Wiki]
+
+
+Messages
+~~~~~~~~
+Prints a pre-defined message as Message5WH object using the default StringTemplate and a custom StringTemplate.
