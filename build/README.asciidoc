@@ -1,4 +1,0 @@
-SKB Build System
-----------------
-
-The examples are using the original SKB build system. For details on how to use it please see the link:https://github.com/vdmeer/skb-java/blob/master/build/README.asciidoc[skb-java] description.

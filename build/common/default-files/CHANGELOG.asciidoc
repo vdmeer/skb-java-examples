@@ -1,4 +1,0 @@
-Default CHANGELOG
------------------
-
-This project has not yet defined a CHANGELOG file.

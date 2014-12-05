@@ -1,4 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<project name="project-common" xmlns:ivy="antlib:org.apache.ivy.ant">
-	<target name="prepare" description="Preparation for build (ANTLR/Constants/ASCIIDOC) (project)." />
-</project>
