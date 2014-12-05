@@ -3,7 +3,6 @@ package de.vandermeer.skb.examples.execs;
 import org.junit.Test;
 
 import de.vandermeer.skb.base.utils.Skb_EncodingUtils;
-import de.vandermeer.skb.examples.Messages;
 
 public class TestMe {
 

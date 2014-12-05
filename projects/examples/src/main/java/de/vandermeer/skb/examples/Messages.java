@@ -53,7 +53,7 @@ public class Messages implements Skb_Executable {
 	@Override
 	public void serviceHelpScreen() {
 		System.out.println("Messages:");
-		System.out.println("Prints examples for Message5WH (skb-base), using the default and cutom templates.");
+		System.out.println("Prints examples for Message5WH (skb-base), using the default and custom templates.");
 
 	}
 }
