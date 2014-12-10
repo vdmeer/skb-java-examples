@@ -20,7 +20,7 @@ import de.vandermeer.execs.Skb_Executable;
  * Example of a simple executable service.
  *
  * @author     Sven van der Meer &lt;vdmeer.sven@mykolab.com&gt;
- * @version    v0.0.1 build 140610 (10-Jun-14) with Java 1.8
+ * @version    v0.0.3-SNAPSHOT build 141210 (10-Dec-14) for Java 1.8
  */
 public class Service1 implements Skb_Executable {
 
