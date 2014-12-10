@@ -1,9 +1,8 @@
 package de.vandermeer.skb.examples;
 
+import de.vandermeer.asciitable.v1.AsciiTable;
+import de.vandermeer.asciitable.v1.StandardTableThemes;
 import de.vandermeer.execs.Skb_Executable;
-import de.vandermeer.skb.asciitable.AsciiTable;
-import de.vandermeer.skb.asciitable.StandardTableThemes;
-import de.vandermeer.skb.asciitable.TableOptions;
 
 public class ConsoleTable implements Skb_Executable {
 
@@ -27,50 +26,60 @@ public class ConsoleTable implements Skb_Executable {
 		at.addRow("row 1", "this is col 2", "and this is column 3");
 		at.addRow("row 2", "some text for column 2", "and some text for column 3");
 
-		//table options
-		TableOptions to = new TableOptions();
-
 		switch(args[0]){
 			case "-a":
 				break;
 			case "-l":
-				to.setRenderTheme(StandardTableThemes.LIGHT);
+				auto.setTheme(StandardTableThemes.LIGHT);
+				at.setTheme(StandardTableThemes.LIGHT);
 				break;
 			case "-d":
-				to.setRenderTheme(StandardTableThemes.DOUBLE);
+				auto.setTheme(StandardTableThemes.DOUBLE);
+				at.setTheme(StandardTableThemes.DOUBLE);
 				break;
 			case "-dl":
-				to.setRenderTheme(StandardTableThemes.DOUBLE_LIGHT);
+				auto.setTheme(StandardTableThemes.DOUBLE_LIGHT);
+				at.setTheme(StandardTableThemes.DOUBLE_LIGHT);
 				break;
 			case "-ld":
-				to.setRenderTheme(StandardTableThemes.LIGHT_DOUBLE);
+				auto.setTheme(StandardTableThemes.LIGHT_DOUBLE);
+				at.setTheme(StandardTableThemes.LIGHT_DOUBLE);
 				break;
 			case "-y":
-				to.setRenderTheme(StandardTableThemes.HEAVY);
+				auto.setTheme(StandardTableThemes.HEAVY);
+				at.setTheme(StandardTableThemes.HEAVY);
 				break;
 			case "-yl":
-				to.setRenderTheme(StandardTableThemes.HEAVY_LIGHT);
+				auto.setTheme(StandardTableThemes.HEAVY_LIGHT);
+				at.setTheme(StandardTableThemes.HEAVY_LIGHT);
 				break;
 			case "-ly":
-				to.setRenderTheme(StandardTableThemes.LIGHT_HEAVY);
+				auto.setTheme(StandardTableThemes.LIGHT_HEAVY);
+				at.setTheme(StandardTableThemes.LIGHT_HEAVY);
 				break;
 			case "-la-7":
-				to.setRenderTheme(StandardTableThemes.LATEX_7BIT);
+				auto.setTheme(StandardTableThemes.LATEX_7BIT);
+				at.setTheme(StandardTableThemes.LATEX_7BIT);
 				break;
 			case "-la-d":
-				to.setRenderTheme(StandardTableThemes.LATEX_DOUBLE);
+				auto.setTheme(StandardTableThemes.LATEX_DOUBLE);
+				at.setTheme(StandardTableThemes.LATEX_DOUBLE);
 				break;
 			case "-la-h":
-				to.setRenderTheme(StandardTableThemes.LATEX_HEAVY);
+				auto.setTheme(StandardTableThemes.LATEX_HEAVY);
+				at.setTheme(StandardTableThemes.LATEX_HEAVY);
 				break;
 			case "-la-l":
-				to.setRenderTheme(StandardTableThemes.LATEX_LIGHT);
+				auto.setTheme(StandardTableThemes.LATEX_LIGHT);
+				at.setTheme(StandardTableThemes.LATEX_LIGHT);
 				break;
 			case "-la-dd":
-				to.setRenderTheme(StandardTableThemes.LATEX_LIGHT_DOUBLE_DASH);
+				auto.setTheme(StandardTableThemes.LATEX_LIGHT_DOUBLE_DASH);
+				at.setTheme(StandardTableThemes.LATEX_LIGHT_DOUBLE_DASH);
 				break;
 			case "-la-td":
-				to.setRenderTheme(StandardTableThemes.LATEX_LIGHT_TRIPLE_DASH);
+				auto.setTheme(StandardTableThemes.LATEX_LIGHT_TRIPLE_DASH);
+				at.setTheme(StandardTableThemes.LATEX_LIGHT_TRIPLE_DASH);
 				break;
 
 			default:
@@ -78,8 +87,8 @@ public class ConsoleTable implements Skb_Executable {
 				return -1;
 		}
 
-		System.out.println(auto.render(to));
-		System.out.println(at.render(to));
+		System.out.println(auto.render());
+		System.out.println(at.render());
 
 		return 0;
 	}
