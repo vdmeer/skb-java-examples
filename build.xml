@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="skb" default="deploy-demos">
+	<!--
+		make sure to set the following variables before calling "deploy-demos"
+		- skb.module.artifact
+		- skb.module.version
+		- PROJECT_HOME
+		- PROJECT_HOME_CYG
+		- PROJECT_HOME_DOS
+	-->
+
+	<import file="src/demo/demo-script.macro.xml"/>
+	<target name="deploy-demos">
+		<property name="demo.dir"     value="${PROJECT_HOME}/all-demos/skb-examples" />
+		<property name="demo.dir.cyg" value="${PROJECT_HOME_CYG}/all-demos/skb-examples" />
+		<property name="demo.dir.dos" value="${PROJECT_HOME_DOS}/all-demos/skb-examples" />
+
+		<property name="dest.dir"     value="${demo.dir}" />
+		<property name="template.dir" value="src/demo" />
+
+		<mkdir dir="${demo.dir}/bin/bat"/>
+		<mkdir dir="${demo.dir}/bin/cyg"/>
+		<mkdir dir="${demo.dir}/bin/sh"/>
+
+		<copy todir="${demo.dir}/lib/java" file="target/${skb.module.artifact}-${skb.module.version}.jar" />
+
+		<copy todir="${demo.dir}/lib/java">
+			<fileset dir="target/lib">
+				<include name="*.jar"/>
+			</fileset>
+		</copy>
+
+		<create-demo-script dest.file="table" exec.name="de.vandermeer.skb.examples.ConsoleTable" />
+		<create-demo-script dest.file="messages" exec.name="de.vandermeer.skb.examples.Messages" />
+		<create-demo-script dest.file="default-encoding" exec.name="de.vandermeer.skb.examples.execs.DefaultEncoding" />
+		<create-demo-script dest.file="service1" exec.name="de.vandermeer.skb.examples.execs.Service1" />
+		<create-demo-script dest.file="service2" exec.name="de.vandermeer.skb.examples.execs.Service2" />
+
+		<create-demo-script template.file.bat="bat-java" template.file.sh="sh-java" exec.name="de.vandermeer.execs.Skb_Exec" dest.file="run" />
+	</target>
+</project>
