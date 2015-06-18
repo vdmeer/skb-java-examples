@@ -20,7 +20,7 @@ import de.vandermeer.execs.Skb_Executable;
  * Example of a simple executable service with command line arguments.
  *
  * @author     Sven van der Meer &lt;vdmeer.sven@mykolab.com&gt;
- * @version    v0.0.3-SNAPSHOT build 141210 (10-Dec-14) for Java 1.8
+ * @version    v0.0.3 build 150618 (18-Jun-15) for Java 1.8
  */
 public class Service2 implements Skb_Executable {
 
@@ -56,5 +56,10 @@ public class Service2 implements Skb_Executable {
 		System.out.println("-g for a German greeting");
 		System.out.println("-e for an English greeting");
 		System.out.println("-f for a French greeting");
+	}
+
+	@Override
+	public String getName() {
+		return "example-service-2";
 	}
 }

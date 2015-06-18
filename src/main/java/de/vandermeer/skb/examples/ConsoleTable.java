@@ -113,4 +113,9 @@ public class ConsoleTable implements Skb_Executable {
 		System.out.println("-la-l   - prints a LaTeX style table using UTF-8 light box characters");
 		System.out.println("-la-td  - prints a LaTeX style table using UTF-8 triple dash characters");
 	}
+
+	@Override
+	public String getName() {
+		return "example-console-table";
+	}
 }

@@ -56,4 +56,9 @@ public class Messages implements Skb_Executable {
 		System.out.println("Prints examples for Message5WH (skb-base), using the default and custom templates.");
 
 	}
+
+	@Override
+	public String getName() {
+		return "example-messages";
+	}
 }

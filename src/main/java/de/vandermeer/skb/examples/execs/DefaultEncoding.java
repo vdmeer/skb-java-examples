@@ -18,4 +18,8 @@ public class DefaultEncoding implements Skb_Executable {
 		System.out.println();
 	}
 
+	@Override
+	public String getName() {
+		return "example-encoding";
+	}
 }
