@@ -1,5 +1,5 @@
 
 skb.module.artifact=skb.examples
-skb.module.version=0.0.3-SNAPSHOT
+skb.module.version=0.0.4-SNAPSHOT
 template.dir=src/demo/templates
 demo.dir.abs=all-demos
