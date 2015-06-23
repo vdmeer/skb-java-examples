@@ -12,17 +12,18 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+
 package de.vandermeer.skb.examples.execs;
 
-import de.vandermeer.execs.Skb_Executable;
+import de.vandermeer.execs.ExecutableService;
 
 /**
  * Example of a simple executable service.
  *
  * @author     Sven van der Meer &lt;vdmeer.sven@mykolab.com&gt;
- * @version    v0.0.4 build 150619 (19-Jun-15) for Java 1.8
+ * @version    v0.0.5 build 150623 (23-Jun-15) for Java 1.8
  */
-public class Service1 implements Skb_Executable {
+public class Service1 implements ExecutableService {
 
 	@Override
 	public int executeService(String[] args) {

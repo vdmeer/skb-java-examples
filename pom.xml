@@ -2,7 +2,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>de.vandermeer</groupId>
 	<artifactId>skb-examples</artifactId>
-	<version>0.0.4</version>
+	<version>0.0.5</version>
 
 	<name>SKB Examples</name>
 	<url>https://github.com/vdmeer/skb-java-examples</url>
@@ -87,7 +87,7 @@
 		<dependency>
 			<groupId>de.vandermeer</groupId>
 			<artifactId>execs</artifactId>
-			<version>0.0.4</version>
+			<version>0.0.5</version>
 		</dependency>
 		<dependency>
 			<groupId>de.vandermeer</groupId>
@@ -97,7 +97,7 @@
 		<dependency>
 			<groupId>de.vandermeer</groupId>
 			<artifactId>skb-base</artifactId>
-			<version>0.0.4</version>
+			<version>0.0.5</version>
 		</dependency>
 		<dependency>
 			<groupId>junit</groupId>

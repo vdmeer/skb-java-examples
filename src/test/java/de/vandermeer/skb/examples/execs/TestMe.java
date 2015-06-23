@@ -2,7 +2,7 @@ package de.vandermeer.skb.examples.execs;
 
 import org.junit.Test;
 
-import de.vandermeer.skb.base.utils.Skb_EncodingUtils;
+import de.vandermeer.skb.base.utils.Skb_ConsoleUtils;
 
 public class TestMe {
 
@@ -29,6 +29,6 @@ public class TestMe {
 				"-l"
 		};
 		ne.execute(args);
-		System.err.println(Skb_EncodingUtils.getDefaultEncoding());
+		System.err.println(Skb_ConsoleUtils.getDefaultEncoding());
 	}
 }

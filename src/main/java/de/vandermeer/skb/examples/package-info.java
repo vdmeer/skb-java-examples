@@ -14,9 +14,9 @@
  */
 
 /**
- * Base definitions and interfaces for the SKB.
+ * Some examples and demos of SKB packages.
  *
  * @author     Sven van der Meer &lt;vdmeer.sven@mykolab.com&gt;
- * @version    v0.0.4 build 150619 (19-Jun-15) for Java 1.8
+ * @version    v0.0.5 build 150623 (23-Jun-15) for Java 1.8
  */
 package de.vandermeer.skb.examples;

@@ -13,6 +13,9 @@
 	<target name="deploy-demos">
 		<copy todir="${demo.dir}/lib/java" file="target/${skb.module.artifact}-${skb.module.version}.jar" />
 
+		<!-- local etc -->
+		<copy todir="${demo.dir}/etc"><fileset dir="src/demo/etc"/></copy>
+
 		<copy todir="${demo.dir}/lib/java">
 			<fileset dir="target/lib">
 				<include name="*.jar"/>
@@ -25,6 +28,6 @@
 		<create-demo-script dest.file="service1"         exec.name="de.vandermeer.skb.examples.execs.Service1" />
 		<create-demo-script dest.file="service2"         exec.name="de.vandermeer.skb.examples.execs.Service2" />
 
-		<create-demo-script template.file.bat="bat-java" template.file.sh="sh-java" exec.name="de.vandermeer.execs.Skb_Exec" dest.file="run" />
+		<create-demo-script template.file.bat="bat-java" template.file.sh="sh-java" exec.name="de.vandermeer.execs.ExecS" dest.file="run" />
 	</target>
 </project>

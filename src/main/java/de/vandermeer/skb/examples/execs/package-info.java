@@ -13,32 +13,10 @@
  * limitations under the License.
  */
 
-package de.vandermeer.skb.examples.execs;
-
-import de.vandermeer.execs.ExecS;
-
 /**
- * Example for using ExecS service executor.
+ * Some examples and demos for using the ExecS service executor.
  *
  * @author     Sven van der Meer &lt;vdmeer.sven@mykolab.com&gt;
  * @version    v0.0.5 build 150623 (23-Jun-15) for Java 1.8
  */
-public class SvcExec extends ExecS {
-
-	public SvcExec(){
-		super("svc-exec");
-		this.addService("svc1", Service1.class);
-		this.addService("svc2", Service2.class);
-	}
-
-	/**
-	 * Public main to start any SKB Service.
-	 * @param args command line arguments
-	 */
-	public static void main(String[] args) {
-		SvcExec run = new SvcExec();
-		int ret = run.execute(args);
-		System.exit(ret);
-	}
-
-}
+package de.vandermeer.skb.examples.execs;

@@ -1,3 +1,9 @@
+v0.0.5 - maintenance - 2015-06-23
+---------------------------------
+* changes for skb-base 0.0.5
+* changes for execs 0.0.5
+
+
 v0.0.4 - maintenance - 2015-06-19
 ---------------------------------
 * fixed artefact name, clean up, test file rename
