@@ -35,14 +35,14 @@ public class ConsoleTable implements ExecutableService {
 		}
 
 		//simple table with auto column width
-		AsciiTable auto=AsciiTable.newTable(3, 76);
+		AsciiTable auto = AsciiTable.newTable(3, 76);
 		auto.addRow(null, null, "Table Heading");
 		auto.addRow("first row (col1)", "with some information", "and more information");
 		auto.addRow("second row (col1)", "with some information (col2)", "and more information (col3)");
 
 		//table with pre-defined column width
-		Integer[] columns=new Integer[]{10, 15, 20};
-		AsciiTable at=AsciiTable.newTable(columns);
+		Integer[] columns = new Integer[]{10, 15, 20};
+		AsciiTable at = AsciiTable.newTable(columns);
 		at.addRow(null, null, "Table Heading");
 		at.addRow("row 1", "this is col 2", "and this is column 3");
 		at.addRow("row 2", "some text for column 2", "and some text for column 3");

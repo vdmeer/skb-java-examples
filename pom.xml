@@ -2,7 +2,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>de.vandermeer</groupId>
 	<artifactId>skb-examples</artifactId>
-	<version>0.0.5</version>
+	<version>0.0.6-SNAPSHOT</version>
 
 	<name>SKB Examples</name>
 	<url>https://github.com/vdmeer/skb-java-examples</url>
@@ -87,17 +87,17 @@
 		<dependency>
 			<groupId>de.vandermeer</groupId>
 			<artifactId>execs</artifactId>
-			<version>0.0.5</version>
+			<version>0.0.6-SNAPSHOT</version>
 		</dependency>
 		<dependency>
 			<groupId>de.vandermeer</groupId>
 			<artifactId>asciitable</artifactId>
-			<version>0.0.4</version>
+			<version>0.0.5</version>
 		</dependency>
 		<dependency>
 			<groupId>de.vandermeer</groupId>
 			<artifactId>skb-base</artifactId>
-			<version>0.0.5</version>
+			<version>0.0.6-SNAPSHOT</version>
 		</dependency>
 		<dependency>
 			<groupId>junit</groupId>
@@ -116,10 +116,10 @@
 				<version>1.5.0</version>
 				<executions>
 					<execution>
-						<id>package-asciidoc</id>
+						<id>bundle-asciidoc</id>
 						<phase>process-resources</phase>
 						<configuration>
-							<sourceDirectory>src/package/doc</sourceDirectory>
+							<sourceDirectory>src/main/bundle/doc</sourceDirectory>
 							<outputDirectory>./</outputDirectory>
 							<backend>html</backend>
 						</configuration>
@@ -127,19 +127,20 @@
 					</execution>
 				</executions>
 			</plugin>
+
 			<plugin>
 				<artifactId>maven-resources-plugin</artifactId>
 				<version>2.4.3</version>
 				<executions>
 					<execution>
-						<id>copy-docs</id>
+						<id>copy-bundle-docs</id>
 						<phase>generate-resources</phase>
 						<goals><goal>copy-resources</goal></goals>
 						<configuration>
 							<outputDirectory>./</outputDirectory>
 							<resources>
 								<resource>
-									<directory>src/package/doc</directory>
+									<directory>src/main/bundle/doc</directory>
 									<filtering>true</filtering>
 								</resource>
 							</resources>
@@ -165,7 +166,25 @@
 					</execution>
 				</executions>
 			</plugin>
+
 			<plugin>
+				<artifactId>maven-assembly-plugin</artifactId>
+				<executions>
+					<execution>
+						<id>generate-complete-tar</id>
+						<phase>package</phase>
+						<goals>
+							<goal>single</goal>
+						</goals>
+						<configuration>
+							<descriptors>
+								<descriptor>src/main/application/assembly.xml</descriptor>
+							</descriptors>
+							<finalName>${project.artifactId}-${project.version}</finalName>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-jar-plugin</artifactId>
 				<version>2.6</version>
