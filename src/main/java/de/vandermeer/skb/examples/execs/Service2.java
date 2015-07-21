@@ -21,7 +21,8 @@ import de.vandermeer.execs.ExecutableService;
  * Example of a simple executable service with command line arguments.
  *
  * @author     Sven van der Meer &lt;vdmeer.sven@mykolab.com&gt;
- * @version    v0.0.5 build 150623 (23-Jun-15) for Java 1.8
+ * @version    v0.0.6 build 150721 (21-Jul-15) for Java 1.8
+ * @since      v0.0.1
  */
 public class Service2 implements ExecutableService {
 

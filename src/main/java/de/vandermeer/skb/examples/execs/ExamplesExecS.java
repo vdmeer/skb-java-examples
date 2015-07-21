@@ -16,30 +16,26 @@
 package de.vandermeer.skb.examples.execs;
 
 import de.vandermeer.execs.ExecS;
+import de.vandermeer.skb.examples.ConsoleTable;
+import de.vandermeer.skb.examples.Messages;
 
 /**
- * Example for using ExecS service executor.
+ * An ExecS class for the examples and an example for an ExecS class.
  *
  * @author     Sven van der Meer &lt;vdmeer.sven@mykolab.com&gt;
  * @version    v0.0.6 build 150721 (21-Jul-15) for Java 1.8
- * @since      v0.0.1
+ * @since      v0.0.6
  */
-public class SvcExec extends ExecS {
+public class ExamplesExecS extends ExecS {
 
-	public SvcExec(){
-		super("svc-exec");
-		this.addService("svc1", Service1.class);
-		this.addService("svc2", Service2.class);
+	public ExamplesExecS(){
+		super("examples-execs");
+
+		this.classmap.clear();
+		this.addService("console-table", ConsoleTable.class);
+		this.addService("messages", Messages.class);
+		this.addService("default-encoding", DefaultEncoding.class);
+		this.addService("service1", Service1.class);
+		this.addService("service2", Service2.class);
 	}
-
-	/**
-	 * Public main to start any SKB Service.
-	 * @param args command line arguments
-	 */
-	public static void main(String[] args) {
-		SvcExec run = new SvcExec();
-		int ret = run.execute(args);
-		System.exit(ret);
-	}
-
 }

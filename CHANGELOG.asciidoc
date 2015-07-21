@@ -1,3 +1,13 @@
+v0.0.5 - small features - 2015-07-21
+------------------------------------
+* changed dependency to execs v0.0.8
+* changed dependency to skb-base v0.0.7
+	** related code changes for new and changed skb-base classes
+* added local ExecS class with registered services for examples
+	** removed class-map from config for generating run scripts
+	** activate auto-generation of registered services to config for generating run scripts
+
+
 v0.0.5 - maintenance - 2015-06-23
 ---------------------------------
 * changes for skb-base 0.0.5

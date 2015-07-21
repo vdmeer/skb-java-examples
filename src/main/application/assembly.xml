@@ -48,33 +48,4 @@
 			<fileMode>755</fileMode>
 		</fileSet>
 	</fileSets>
-<!--
-	<fileSets>
-		<fileSet>
-			<directory>${project.basedir}/src/main/package/bin</directory>
-			<includes>
-				<include>*</include>
-			</includes>
-			<outputDirectory>/bin</outputDirectory>
-			<fileMode>755</fileMode>
-		</fileSet>
-		<fileSet>
-			<directory>${project.basedir}/src/main/resources</directory>
-			<includes>
-				<include>*flow*</include>
-			</includes>
-			<outputDirectory>/flows</outputDirectory>
-		</fileSet>
-	</fileSets>
-	<files>
-		<file>
-			<source>${project.basedir}/src/main/resources/hazelcast.xml</source>
-			<outputDirectory>/etc</outputDirectory>
-		</file>
-		<file>
-			<source>${project.basedir}/src/main/resources/logback.xml</source>
-			<outputDirectory>/etc</outputDirectory>
-		</file>
-	</files>
--->
 </assembly>

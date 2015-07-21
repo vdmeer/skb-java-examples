@@ -21,19 +21,21 @@ import org.stringtemplate.v4.STGroupString;
 import de.vandermeer.execs.ExecutableService;
 import de.vandermeer.skb.base.message.EMessageType;
 import de.vandermeer.skb.base.message.Message5WH;
+import de.vandermeer.skb.base.message.Message5WH_Builder;
 
 /**
  * Examples on how to use the message object {@link Message5WH}.
  *
  * @author     Sven van der Meer &lt;vdmeer.sven@mykolab.com&gt;
- * @version    v0.0.5 build 150623 (23-Jun-15) for Java 1.8
+ * @version    v0.0.6 build 150721 (21-Jul-15) for Java 1.8
+ * @since      v0.0.1
  */
 public class Messages implements ExecutableService {
 
 	@Override
 	public int executeService(String[] args) {
 		//fill a new message object with information
-		Message5WH msg=new Message5WH()
+		Message5WH msg = new Message5WH_Builder()
 			.setWho("from "+this.getClass().getSimpleName())
 			.addWhat("showing a test message")
 			.setWhen(null)
@@ -42,13 +44,14 @@ public class Messages implements ExecutableService {
 			.addHow("added to the class JavaDoc")
 			.setReporter("The Author")
 			.setType(EMessageType.INFO)
+			.build()
 		;
 		//print that information
 		System.out.println(msg.render());
 
 		System.out.println("\n");
 		//define a new template for a message
-		final String newTemplate=
+		final String newTemplate =
 				"where(location, line, column) ::= <<\n" +
 				"<location;separator=\".\"><if(line&&column)> <line>:<column><elseif(!line&&!column)><elseif(!line)> -:<column><elseif(!column)> <line>:-<endif>\n"+
 				">>\n\n" +
@@ -64,7 +67,18 @@ public class Messages implements ExecutableService {
 				">>\n";
 		//set a new group and add group to message
 		STGroup stg = new STGroupString(newTemplate);
-		msg.setSTG(stg);
+		msg = new Message5WH_Builder()
+			.setWho("from "+this.getClass().getSimpleName())
+			.addWhat("showing a test message")
+			.setWhen(null)
+			.setWhere("the class API documentation", 0, 0)
+			.addWhy("as a demo")
+			.addHow("added to the class JavaDoc")
+			.setReporter("The Author")
+			.setType(EMessageType.INFO)
+			.setSTG(stg)
+			.build()
+		;
 		//print same message with new template
 		System.out.println(msg.render());
 
