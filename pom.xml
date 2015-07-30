@@ -3,6 +3,7 @@
 	<groupId>de.vandermeer</groupId>
 	<artifactId>skb-examples</artifactId>
 	<version>0.0.6</version>
+	<packaging>jar</packaging>
 
 	<name>SKB Examples</name>
 	<url>https://github.com/vdmeer/skb-java-examples</url>
@@ -16,7 +17,6 @@
 		<project.resources.sourceEncoding>UTF-8</project.resources.sourceEncoding>
 		<encoding>UTF-8</encoding>
 		<file.encoding>UTF-8</file.encoding>
-
 	</properties>
 
 	<licenses>
@@ -48,7 +48,7 @@
 	<scm>
 		<developerConnection>scm:git:git@github.com:vdmeer/skb-java-examples.git</developerConnection>
 		<connection>scm:git:git://github.com/vdmeer/skb-java-examples.git</connection>
-		<tag>skb-examples-0.0.3</tag>
+		<tag>skb-examples-0.0.6</tag>
 		<url>https://github.com/vdmeer/skb-java-examples</url>
 	</scm>
 
@@ -245,6 +245,6 @@
 			</plugin>
 		</plugins>
 	</build>
-	<packaging>jar</packaging>
+
 
 </project>
