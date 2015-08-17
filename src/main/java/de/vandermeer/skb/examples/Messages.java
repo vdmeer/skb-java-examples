@@ -27,7 +27,7 @@ import de.vandermeer.skb.base.message.Message5WH_Builder;
  * Examples on how to use the message object {@link Message5WH}.
  *
  * @author     Sven van der Meer &lt;vdmeer.sven@mykolab.com&gt;
- * @version    v0.0.6 build 150721 (21-Jul-15) for Java 1.8
+ * @version    v0.0.6 build 150812 (12-Aug-15) for Java 1.8
  * @since      v0.0.1
  */
 public class Messages implements ExecutableService {

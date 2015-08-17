@@ -21,7 +21,7 @@ import de.vandermeer.execs.ExecS;
  * Example for using ExecS service executor.
  *
  * @author     Sven van der Meer &lt;vdmeer.sven@mykolab.com&gt;
- * @version    v0.0.6 build 150721 (21-Jul-15) for Java 1.8
+ * @version    v0.0.6 build 150812 (12-Aug-15) for Java 1.8
  * @since      v0.0.1
  */
 public class SvcExec extends ExecS {

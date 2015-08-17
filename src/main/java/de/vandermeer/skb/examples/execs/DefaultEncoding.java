@@ -16,20 +16,20 @@
 package de.vandermeer.skb.examples.execs;
 
 import de.vandermeer.execs.ExecutableService;
-import de.vandermeer.skb.base.utils.Skb_ConsoleUtils;
+import de.vandermeer.skb.base.console.Skb_Console;
 
 /**
  * Example for console utilities showing console default encoding.
  *
  * @author     Sven van der Meer &lt;vdmeer.sven@mykolab.com&gt;
- * @version    v0.0.6 build 150721 (21-Jul-15) for Java 1.8
+ * @version    v0.0.6 build 150812 (12-Aug-15) for Java 1.8
  * @since      v0.0.1
  */
 public class DefaultEncoding implements ExecutableService {
 
 	@Override
 	public int executeService(String[] arg0) {
-		System.out.println(Skb_ConsoleUtils.getDefaultEncoding());
+		System.out.println(Skb_Console.getDefaultEncoding());
 		System.out.println();
 		return 0;
 	}

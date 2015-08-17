@@ -15,15 +15,15 @@
 
 package de.vandermeer.skb.examples;
 
-import de.vandermeer.asciitable.v1.AsciiTable;
-import de.vandermeer.asciitable.v1.StandardTableThemes;
+import de.vandermeer.asciitable.v1.V1_AsciiTable;
+import de.vandermeer.asciitable.v1.V1_StandardTableThemes;
 import de.vandermeer.execs.ExecutableService;
 
 /**
  * Examples for using the ASCII table.
  *
  * @author     Sven van der Meer &lt;vdmeer.sven@mykolab.com&gt;
- * @version    v0.0.6 build 150721 (21-Jul-15) for Java 1.8
+ * @version    v0.0.6 build 150812 (12-Aug-15) for Java 1.8
  * @since      v0.0.1
  */
 public class ConsoleTable implements ExecutableService {
@@ -36,14 +36,14 @@ public class ConsoleTable implements ExecutableService {
 		}
 
 		//simple table with auto column width
-		AsciiTable auto = AsciiTable.newTable(3, 76);
+		V1_AsciiTable auto = V1_AsciiTable.newTable(3, 76);
 		auto.addRow(null, null, "Table Heading");
 		auto.addRow("first row (col1)", "with some information", "and more information");
 		auto.addRow("second row (col1)", "with some information (col2)", "and more information (col3)");
 
 		//table with pre-defined column width
 		Integer[] columns = new Integer[]{10, 15, 20};
-		AsciiTable at = AsciiTable.newTable(columns);
+		V1_AsciiTable at = V1_AsciiTable.newTable(columns);
 		at.addRow(null, null, "Table Heading");
 		at.addRow("row 1", "this is col 2", "and this is column 3");
 		at.addRow("row 2", "some text for column 2", "and some text for column 3");
@@ -52,56 +52,56 @@ public class ConsoleTable implements ExecutableService {
 			case "-a":
 				break;
 			case "-l":
-				auto.setTheme(StandardTableThemes.LIGHT);
-				at.setTheme(StandardTableThemes.LIGHT);
+				auto.setTheme(V1_StandardTableThemes.LIGHT);
+				at.setTheme(V1_StandardTableThemes.LIGHT);
 				break;
 			case "-d":
-				auto.setTheme(StandardTableThemes.DOUBLE);
-				at.setTheme(StandardTableThemes.DOUBLE);
+				auto.setTheme(V1_StandardTableThemes.DOUBLE);
+				at.setTheme(V1_StandardTableThemes.DOUBLE);
 				break;
 			case "-dl":
-				auto.setTheme(StandardTableThemes.DOUBLE_LIGHT);
-				at.setTheme(StandardTableThemes.DOUBLE_LIGHT);
+				auto.setTheme(V1_StandardTableThemes.DOUBLE_LIGHT);
+				at.setTheme(V1_StandardTableThemes.DOUBLE_LIGHT);
 				break;
 			case "-ld":
-				auto.setTheme(StandardTableThemes.LIGHT_DOUBLE);
-				at.setTheme(StandardTableThemes.LIGHT_DOUBLE);
+				auto.setTheme(V1_StandardTableThemes.LIGHT_DOUBLE);
+				at.setTheme(V1_StandardTableThemes.LIGHT_DOUBLE);
 				break;
 			case "-y":
-				auto.setTheme(StandardTableThemes.HEAVY);
-				at.setTheme(StandardTableThemes.HEAVY);
+				auto.setTheme(V1_StandardTableThemes.HEAVY);
+				at.setTheme(V1_StandardTableThemes.HEAVY);
 				break;
 			case "-yl":
-				auto.setTheme(StandardTableThemes.HEAVY_LIGHT);
-				at.setTheme(StandardTableThemes.HEAVY_LIGHT);
+				auto.setTheme(V1_StandardTableThemes.HEAVY_LIGHT);
+				at.setTheme(V1_StandardTableThemes.HEAVY_LIGHT);
 				break;
 			case "-ly":
-				auto.setTheme(StandardTableThemes.LIGHT_HEAVY);
-				at.setTheme(StandardTableThemes.LIGHT_HEAVY);
+				auto.setTheme(V1_StandardTableThemes.LIGHT_HEAVY);
+				at.setTheme(V1_StandardTableThemes.LIGHT_HEAVY);
 				break;
 			case "-la-7":
-				auto.setTheme(StandardTableThemes.LATEX_7BIT);
-				at.setTheme(StandardTableThemes.LATEX_7BIT);
+				auto.setTheme(V1_StandardTableThemes.LATEX_7BIT);
+				at.setTheme(V1_StandardTableThemes.LATEX_7BIT);
 				break;
 			case "-la-d":
-				auto.setTheme(StandardTableThemes.LATEX_DOUBLE);
-				at.setTheme(StandardTableThemes.LATEX_DOUBLE);
+				auto.setTheme(V1_StandardTableThemes.LATEX_DOUBLE);
+				at.setTheme(V1_StandardTableThemes.LATEX_DOUBLE);
 				break;
 			case "-la-h":
-				auto.setTheme(StandardTableThemes.LATEX_HEAVY);
-				at.setTheme(StandardTableThemes.LATEX_HEAVY);
+				auto.setTheme(V1_StandardTableThemes.LATEX_HEAVY);
+				at.setTheme(V1_StandardTableThemes.LATEX_HEAVY);
 				break;
 			case "-la-l":
-				auto.setTheme(StandardTableThemes.LATEX_LIGHT);
-				at.setTheme(StandardTableThemes.LATEX_LIGHT);
+				auto.setTheme(V1_StandardTableThemes.LATEX_LIGHT);
+				at.setTheme(V1_StandardTableThemes.LATEX_LIGHT);
 				break;
 			case "-la-dd":
-				auto.setTheme(StandardTableThemes.LATEX_LIGHT_DOUBLE_DASH);
-				at.setTheme(StandardTableThemes.LATEX_LIGHT_DOUBLE_DASH);
+				auto.setTheme(V1_StandardTableThemes.LATEX_LIGHT_DOUBLE_DASH);
+				at.setTheme(V1_StandardTableThemes.LATEX_LIGHT_DOUBLE_DASH);
 				break;
 			case "-la-td":
-				auto.setTheme(StandardTableThemes.LATEX_LIGHT_TRIPLE_DASH);
-				at.setTheme(StandardTableThemes.LATEX_LIGHT_TRIPLE_DASH);
+				auto.setTheme(V1_StandardTableThemes.LATEX_LIGHT_TRIPLE_DASH);
+				at.setTheme(V1_StandardTableThemes.LATEX_LIGHT_TRIPLE_DASH);
 				break;
 
 			default:

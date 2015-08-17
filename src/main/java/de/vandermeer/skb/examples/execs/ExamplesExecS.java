@@ -23,7 +23,7 @@ import de.vandermeer.skb.examples.Messages;
  * An ExecS class for the examples and an example for an ExecS class.
  *
  * @author     Sven van der Meer &lt;vdmeer.sven@mykolab.com&gt;
- * @version    v0.0.6 build 150721 (21-Jul-15) for Java 1.8
+ * @version    v0.0.6 build 150812 (12-Aug-15) for Java 1.8
  * @since      v0.0.6
  */
 public class ExamplesExecS extends ExecS {
