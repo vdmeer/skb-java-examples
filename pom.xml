@@ -87,23 +87,23 @@
 		<dependency>
 			<groupId>de.vandermeer</groupId>
 			<artifactId>execs</artifactId>
-			<version>0.1.1</version>
-		</dependency>
-		<dependency>
-			<groupId>de.vandermeer</groupId>
-			<artifactId>asciitable</artifactId>
-			<version>0.2.1</version>
+			<version>0.3.3</version>
 		</dependency>
 		<dependency>
 			<groupId>de.vandermeer</groupId>
 			<artifactId>skb-base</artifactId>
-			<version>0.1.2</version>
+			<version>0.1.8</version>
 		</dependency>
 		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
 			<version>4.12</version>
 			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>de.sven-jacobs</groupId>
+			<artifactId>loremipsum</artifactId>
+			<version>1.0</version>
 		</dependency>
 	</dependencies>
 
@@ -113,13 +113,13 @@
 			<plugin>
 				<groupId>org.asciidoctor</groupId>
 				<artifactId>asciidoctor-maven-plugin</artifactId>
-				<version>1.5.2</version>
+				<version>1.5.3</version>
 				<executions>
 					<execution>
 						<id>bundle-asciidoc</id>
 						<phase>process-resources</phase>
 						<configuration>
-							<sourceDirectory>src/main/bundle/doc</sourceDirectory>
+							<sourceDirectory>src/bundle/doc</sourceDirectory>
 							<outputDirectory>./</outputDirectory>
 							<backend>html</backend>
 						</configuration>
@@ -140,7 +140,7 @@
 							<outputDirectory>./</outputDirectory>
 							<resources>
 								<resource>
-									<directory>src/main/bundle/doc</directory>
+									<directory>src/bundle/doc</directory>
 									<filtering>true</filtering>
 								</resource>
 							</resources>
@@ -221,7 +221,7 @@
 							<docencoding>${project.resources.sourceEncoding}</docencoding>
 							<charset>${project.resources.sourceEncoding}</charset>
 							<aggregate>true</aggregate>
-							<overview>overview.html</overview>
+							<overview>${basedir}/src/main/javadoc/overview.html</overview>
 							<nohelp>true</nohelp>
 							<header>${project.name}: ${project.version}</header>
 							<footer>${project.name}: ${project.version}</footer>
@@ -229,6 +229,8 @@
 							<noqualifier>all</noqualifier>
 							<detectLinks>true</detectLinks>
 							<detectJavaApiLink>true</detectJavaApiLink>
+							<javadocDirectory>${basedir}/src/main/javadoc</javadocDirectory>
+							<docfilessubdirs>true</docfilessubdirs>
 						</configuration>
 					</execution>
 				</executions>

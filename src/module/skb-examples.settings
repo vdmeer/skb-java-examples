@@ -12,6 +12,6 @@ skb.module.scm.connection=scm:git:git://github.com/vdmeer/skb-java-examples.git
 skb.module.scm.url=https://github.com/vdmeer/skb-java-examples
 skb.module.issueManagement.url=https://github.com/vdmeer/skb-java-examples/issues
 skb.module.issueManagement.system=github
-skb.module.internalDependencies=execs asciitable skb-base
+skb.module.internalDependencies=execs skb-base
 skb.module.packaging=
 skb.module.appdir.name=examples

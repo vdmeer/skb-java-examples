@@ -17,21 +17,31 @@ package de.vandermeer.skb.examples;
 
 import de.vandermeer.asciitable.v1.V1_AsciiTable;
 import de.vandermeer.asciitable.v1.V1_StandardTableThemes;
-import de.vandermeer.execs.ExecutableService;
+import de.vandermeer.execs.ExecS_Application;
+import de.vandermeer.execs.options.ApplicationOption;
 
 /**
- * Examples for using the ASCII table.
+ * Examples for using {@link V1_AsciiTable}.
  *
  * @author     Sven van der Meer &lt;vdmeer.sven@mykolab.com&gt;
  * @version    v0.0.6 build 150812 (12-Aug-15) for Java 1.8
  * @since      v0.0.1
  */
-public class ConsoleTable implements ExecutableService {
+public class V1_AsciiTable_Examples implements ExecS_Application {
+
+	/** Application name. */
+	public final static String APP_NAME = "ascii-table-v1-examples";
+
+	/** Application display name. */
+	public final static String APP_DISPLAY_NAME = "ASCII Table V1 Examples";
+
+	/** Application version, should be same as the version in the class JavaDoc. */
+	public final static String APP_VERSION = "v0.0.6 build 150812 (12-Aug-15) for Java 1.8";
 
 	@Override
-	public int executeService(String[] args) {
+	public int executeApplication(String[] args) {
 		if(args.length==0){
-			this.serviceHelpScreen();
+			this.appHelpScreen();
 			return -1;
 		}
 
@@ -116,7 +126,7 @@ public class ConsoleTable implements ExecutableService {
 	}
 
 	@Override
-	public void serviceHelpScreen() {
+	public void appHelpScreen() {
 		System.out.println("ConsoleTable:");
 		System.out.println("Examples for AsciiTable (skb-asciitable). Each options prints tow tables in different styles");
 
@@ -137,7 +147,27 @@ public class ConsoleTable implements ExecutableService {
 	}
 
 	@Override
-	public String getName() {
-		return "example-console-table";
+	public String getAppName() {
+		return APP_NAME;
+	}
+
+	@Override
+	public String getAppDisplayName(){
+		return APP_DISPLAY_NAME;
+	}
+
+	@Override
+	public String getAppDescription() {
+		return "Examples for V1_AsciiTable (skb-asciitable). Each options prints tow tables in different styles";
+	}
+
+	@Override
+	public ApplicationOption<?>[] getAppOptions() {
+		return null;
+	}
+
+	@Override
+	public String getAppVersion() {
+		return APP_VERSION;
 	}
 }

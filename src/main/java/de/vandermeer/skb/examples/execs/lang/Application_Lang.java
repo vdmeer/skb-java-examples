@@ -13,41 +13,61 @@
  * limitations under the License.
  */
 
-package de.vandermeer.skb.examples.execs;
+package de.vandermeer.skb.examples.execs.lang;
 
 import de.vandermeer.execs.ExecS_Application;
 import de.vandermeer.execs.options.ApplicationOption;
-import de.vandermeer.skb.base.console.Skb_Console;
 
 /**
- * Example for console utilities showing console default encoding.
+ * Example of a simple application with command line arguments.
  *
  * @author     Sven van der Meer &lt;vdmeer.sven@mykolab.com&gt;
  * @version    v0.0.6 build 150812 (12-Aug-15) for Java 1.8
  * @since      v0.0.1
  */
-public class DefaultEncoding implements ExecS_Application {
+public class Application_Lang implements ExecS_Application {
 
 	/** Application name. */
-	public final static String APP_NAME = "default-encoding";
+	public final static String APP_NAME = "app-lang";
 
 	/** Application display name. */
-	public final static String APP_DISPLAY_NAME = "Default-Encoding";
+	public final static String APP_DISPLAY_NAME = "Application-Lang";
 
 	/** Application version, should be same as the version in the class JavaDoc. */
 	public final static String APP_VERSION = "v0.2.0 build 150826 (26-Aug-15) for Java 1.8";
 
 	@Override
-	public int executeApplication(String[] arg0) {
-		System.out.println(Skb_Console.getDefaultEncoding());
-		System.out.println();
+	public int executeApplication(String[] args) {
+		if(args.length==0){
+			this.appHelpScreen();
+			return -1;
+		}
+
+		switch(args[0]){
+			case "-g":
+				System.out.println("Hallo, hier ist die Anwendung Sprache.");
+				break;
+			case "-f":
+				System.out.println("Bonjour, ceci est le application lang.");
+				break;
+			case "-e":
+				System.out.println("Hi, this is application language.");
+				break;
+			default:
+				System.out.println(this.getAppName() + ": unknown option: " + args[0]);
+				return -1;
+		}
 		return 0;
 	}
 
 	@Override
 	public void appHelpScreen() {
-		System.out.println("Prints the default encoding.");
-		System.out.println();
+		System.out.println(this.getAppName() + " help:");
+		System.out.println("- this is a simple application called " + this.getAppName());
+
+		System.out.println("-g for a German greeting");
+		System.out.println("-e for an English greeting");
+		System.out.println("-f for a French greeting");
 	}
 
 	@Override
@@ -62,7 +82,7 @@ public class DefaultEncoding implements ExecS_Application {
 
 	@Override
 	public String getAppDescription() {
-		return "Prints the default encoding.";
+		return "Application example with language options";
 	}
 
 	@Override

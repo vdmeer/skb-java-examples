@@ -2,7 +2,7 @@ package de.vandermeer.skb.examples.execs;
 
 import org.junit.Test;
 
-import de.vandermeer.skb.base.console.Skb_Console;
+import de.vandermeer.skb.examples.atv2.V2_AsciiTable_Shell;
 
 public class TestMe {
 
@@ -21,14 +21,12 @@ public class TestMe {
 //		ct.executeService(new String[]{"-y"});
 //	}
 
-	@Test
-	public void testMe2(){
-		SvcExec ne = new SvcExec();
-		String[] args = new String[]{
-				"de.vandermeer.skb.examples.ConsoleTable",
-				"-l"
-		};
-		ne.execute(args);
-		System.err.println(Skb_Console.getDefaultEncoding());
-	}
+//	@Test
+//	public void testMe2(){
+//		SvcExec ne = new SvcExec();
+//		String[] args = new String[]{
+//				V2_AsciiTable_Shell.class.getName()
+//		};
+//		ne.execute(args);
+//	}
 }

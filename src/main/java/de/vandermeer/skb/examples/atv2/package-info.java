@@ -13,34 +13,11 @@
  * limitations under the License.
  */
 
-package de.vandermeer.skb.examples.execs;
-
-import de.vandermeer.execs.ExecutableService;
-
 /**
- * Example of a simple executable service.
+ * Examples for {@link de.vandermeer.asciitable.v2.V2_AsciiTable} implemented as a shell and CLI tools.
  *
  * @author     Sven van der Meer &lt;vdmeer.sven@mykolab.com&gt;
  * @version    v0.0.6 build 150812 (12-Aug-15) for Java 1.8
  * @since      v0.0.1
  */
-public class Service1 implements ExecutableService {
-
-	@Override
-	public int executeService(String[] args) {
-		System.out.println("Service1 executed");
-		return 0;
-	}
-
-	@Override
-	public void serviceHelpScreen() {
-		System.out.println("Service1 help:");
-		System.out.println("- This is a simple Service called Service1");
-		System.out.println("- no arguments, does nothing");
-	}
-
-	@Override
-	public String getName() {
-		return "example-service-2";
-	}
-}
+package de.vandermeer.skb.examples.atv2;

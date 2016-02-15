@@ -18,8 +18,10 @@ package de.vandermeer.skb.examples;
 import org.stringtemplate.v4.STGroup;
 import org.stringtemplate.v4.STGroupString;
 
-import de.vandermeer.execs.ExecutableService;
-import de.vandermeer.skb.base.message.EMessageType;
+import de.vandermeer.execs.ExecS_Application;
+import de.vandermeer.execs.options.ApplicationOption;
+import de.vandermeer.skb.base.managers.MessageRenderer;
+import de.vandermeer.skb.base.message.E_MessageType;
 import de.vandermeer.skb.base.message.Message5WH;
 import de.vandermeer.skb.base.message.Message5WH_Builder;
 
@@ -30,10 +32,19 @@ import de.vandermeer.skb.base.message.Message5WH_Builder;
  * @version    v0.0.6 build 150812 (12-Aug-15) for Java 1.8
  * @since      v0.0.1
  */
-public class Messages implements ExecutableService {
+public class Message5WH_Examples implements ExecS_Application {
+
+	/** Application name. */
+	public final static String APP_NAME = "message-5wh-examples";
+
+	/** Application display name. */
+	public final static String APP_DISPLAY_NAME = "Message 5WH Examples";
+
+	/** Application version, should be same as the version in the class JavaDoc. */
+	public final static String APP_VERSION = "v0.0.6 build 150812 (12-Aug-15) for Java 1.8";
 
 	@Override
-	public int executeService(String[] args) {
+	public int executeApplication(String[] args) {
 		//fill a new message object with information
 		Message5WH msg = new Message5WH_Builder()
 			.setWho("from "+this.getClass().getSimpleName())
@@ -43,13 +54,15 @@ public class Messages implements ExecutableService {
 			.addWhy("as a demo")
 			.addHow("added to the class JavaDoc")
 			.setReporter("The Author")
-			.setType(EMessageType.INFO)
+			.setType(E_MessageType.INFO)
 			.build()
 		;
+
 		//print that information
 		System.out.println(msg.render());
 
 		System.out.println("\n");
+
 		//define a new template for a message
 		final String newTemplate =
 				"where(location, line, column) ::= <<\n" +
@@ -65,35 +78,48 @@ public class Messages implements ExecutableService {
 					"<if(why)>Why      = <why><endif>\n" +
 					"<if(how)>How      = <how><endif>\n" +
 				">>\n";
+
 		//set a new group and add group to message
 		STGroup stg = new STGroupString(newTemplate);
-		msg = new Message5WH_Builder()
-			.setWho("from "+this.getClass().getSimpleName())
-			.addWhat("showing a test message")
-			.setWhen(null)
-			.setWhere("the class API documentation", 0, 0)
-			.addWhy("as a demo")
-			.addHow("added to the class JavaDoc")
-			.setReporter("The Author")
-			.setType(EMessageType.INFO)
-			.setSTG(stg)
-			.build()
-		;
+
+		//create a new renderer
+		MessageRenderer ren = new MessageRenderer(stg);
+
 		//print same message with new template
-		System.out.println(msg.render());
+		System.out.println(ren.render(msg));
 
 		return 0;
 	}
 
 	@Override
-	public void serviceHelpScreen() {
+	public void appHelpScreen() {
 		System.out.println("Messages:");
 		System.out.println("Prints examples for Message5WH (skb-base), using the default and custom templates.");
 
 	}
 
 	@Override
-	public String getName() {
-		return "example-messages";
+	public String getAppName() {
+		return APP_NAME;
+	}
+
+	@Override
+	public String getAppDisplayName(){
+		return APP_DISPLAY_NAME;
+	}
+
+	@Override
+	public String getAppDescription() {
+		return "Prints examples for Message5WH (skb-base), using the default and custom templates.";
+	}
+
+	@Override
+	public ApplicationOption<?>[] getAppOptions() {
+		return null;
+	}
+
+	@Override
+	public String getAppVersion() {
+		return APP_VERSION;
 	}
 }

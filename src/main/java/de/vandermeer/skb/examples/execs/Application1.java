@@ -17,37 +17,36 @@ package de.vandermeer.skb.examples.execs;
 
 import de.vandermeer.execs.ExecS_Application;
 import de.vandermeer.execs.options.ApplicationOption;
-import de.vandermeer.skb.base.console.Skb_Console;
 
 /**
- * Example for console utilities showing console default encoding.
+ * Example of a simple application.
  *
  * @author     Sven van der Meer &lt;vdmeer.sven@mykolab.com&gt;
  * @version    v0.0.6 build 150812 (12-Aug-15) for Java 1.8
  * @since      v0.0.1
  */
-public class DefaultEncoding implements ExecS_Application {
+public class Application1 implements ExecS_Application {
 
 	/** Application name. */
-	public final static String APP_NAME = "default-encoding";
+	public final static String APP_NAME = "app-1";
 
 	/** Application display name. */
-	public final static String APP_DISPLAY_NAME = "Default-Encoding";
+	public final static String APP_DISPLAY_NAME = "Application-1";
 
 	/** Application version, should be same as the version in the class JavaDoc. */
 	public final static String APP_VERSION = "v0.2.0 build 150826 (26-Aug-15) for Java 1.8";
 
 	@Override
-	public int executeApplication(String[] arg0) {
-		System.out.println(Skb_Console.getDefaultEncoding());
-		System.out.println();
+	public int executeApplication(String[] args) {
+		System.out.println("Application1 executed");
 		return 0;
 	}
 
 	@Override
 	public void appHelpScreen() {
-		System.out.println("Prints the default encoding.");
-		System.out.println();
+		System.out.println("Application1 help:");
+		System.out.println("- This is a simple application called Application1");
+		System.out.println("- no arguments, does nothing");
 	}
 
 	@Override
@@ -62,7 +61,7 @@ public class DefaultEncoding implements ExecS_Application {
 
 	@Override
 	public String getAppDescription() {
-		return "Prints the default encoding.";
+		return "Example Application1";
 	}
 
 	@Override

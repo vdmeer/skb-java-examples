@@ -16,8 +16,11 @@
 package de.vandermeer.skb.examples.execs;
 
 import de.vandermeer.execs.ExecS;
-import de.vandermeer.skb.examples.ConsoleTable;
-import de.vandermeer.skb.examples.Messages;
+import de.vandermeer.skb.examples.Message5WH_Examples;
+import de.vandermeer.skb.examples.V1_AsciiTable_Examples;
+import de.vandermeer.skb.examples.atv2.V2_AsciiTable_All;
+import de.vandermeer.skb.examples.atv2.V2_AsciiTable_Shell;
+import de.vandermeer.skb.examples.execs.lang.Application_Lang;
 
 /**
  * An ExecS class for the examples and an example for an ExecS class.
@@ -31,11 +34,24 @@ public class ExamplesExecS extends ExecS {
 	public ExamplesExecS(){
 		super("examples-execs");
 
-		this.classmap.clear();
-		this.addService("console-table", ConsoleTable.class);
-		this.addService("messages", Messages.class);
-		this.addService("default-encoding", DefaultEncoding.class);
-		this.addService("service1", Service1.class);
-		this.addService("service2", Service2.class);
+		this.addApplication(V1_AsciiTable_Examples.APP_NAME,	V1_AsciiTable_Examples.class);
+		this.addApplication(Message5WH_Examples.APP_NAME,		Message5WH_Examples.class);
+		this.addApplication(DefaultEncoding.APP_NAME,			DefaultEncoding.class);
+		this.addApplication(Application1.APP_NAME,				Application1.class);
+		this.addApplication(Application_Lang.APP_NAME,			Application_Lang.class);
+
+		this.addApplication(V2_AsciiTable_Shell.APP_NAME,		V2_AsciiTable_Shell.class);
+		this.addApplication(V2_AsciiTable_All.APP_NAME,			V2_AsciiTable_All.class);
 	}
+
+	/**
+	 * Public main to start the application executor.
+	 * @param args command line arguments
+	 */
+	public static void main(String[] args) {
+		ExamplesExecS execs = new ExamplesExecS();
+		int ret = execs.execute(args);
+		System.exit(ret);
+	}
+
 }

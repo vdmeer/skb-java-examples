@@ -1,4 +1,4 @@
-/* Copyright 2014 Sven van der Meer <vdmeer.sven@mykolab.com>
+/* Copyright 2015 Sven van der Meer <vdmeer.sven@mykolab.com>
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -13,41 +13,35 @@
  * limitations under the License.
  */
 
-package de.vandermeer.skb.examples.execs;
+package de.vandermeer.skb.examples.atv2;
 
+import de.vandermeer.asciitable.v2.V2_AsciiTable;
 import de.vandermeer.execs.ExecS_Application;
 import de.vandermeer.execs.options.ApplicationOption;
-import de.vandermeer.skb.base.console.Skb_Console;
 
 /**
- * Example for console utilities showing console default encoding.
+ * Prints all examples for using {@link V2_AsciiTable} implemented in the {@link V2_AsciiTable_Shell}.
  *
  * @author     Sven van der Meer &lt;vdmeer.sven@mykolab.com&gt;
  * @version    v0.0.6 build 150812 (12-Aug-15) for Java 1.8
- * @since      v0.0.1
+ * @since      v0.0.7
  */
-public class DefaultEncoding implements ExecS_Application {
+public class V2_AsciiTable_All implements ExecS_Application {
 
 	/** Application name. */
-	public final static String APP_NAME = "default-encoding";
+	public final static String APP_NAME = "astv2-all";
 
 	/** Application display name. */
-	public final static String APP_DISPLAY_NAME = "Default-Encoding";
+	public final static String APP_DISPLAY_NAME = "All AsciiTable V2 Examples";
 
 	/** Application version, should be same as the version in the class JavaDoc. */
-	public final static String APP_VERSION = "v0.2.0 build 150826 (26-Aug-15) for Java 1.8";
+	public final static String APP_VERSION = "v0.0.6 build 150812 (12-Aug-15) for Java 1.8";
 
 	@Override
-	public int executeApplication(String[] arg0) {
-		System.out.println(Skb_Console.getDefaultEncoding());
-		System.out.println();
+	public int executeApplication(String[] args) {
+		V2_AsciiTable_Shell shell = new V2_AsciiTable_Shell();
+		shell.atsh.parseLine("all");
 		return 0;
-	}
-
-	@Override
-	public void appHelpScreen() {
-		System.out.println("Prints the default encoding.");
-		System.out.println();
 	}
 
 	@Override
@@ -56,13 +50,13 @@ public class DefaultEncoding implements ExecS_Application {
 	}
 
 	@Override
-	public String getAppDisplayName(){
-		return APP_DISPLAY_NAME;
+	public String getAppDescription() {
+		return "All AsciiTale V2 Examples";
 	}
 
 	@Override
-	public String getAppDescription() {
-		return "Prints the default encoding.";
+	public String getAppVersion() {
+		return APP_VERSION;
 	}
 
 	@Override
@@ -70,8 +64,4 @@ public class DefaultEncoding implements ExecS_Application {
 		return null;
 	}
 
-	@Override
-	public String getAppVersion() {
-		return APP_VERSION;
-	}
 }
