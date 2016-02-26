@@ -30,33 +30,40 @@ public class Test_Service_Lang_CLI {
 
 	@Test
 	public void test_Service(){
-		Application_Lang_CLI svc = new Application_Lang_CLI();
+		Application_Lang_CLI svc = null;
 
+		svc = new Application_Lang_CLI();
 		svc.executeApplication(new String[]{});
 
+		svc = new Application_Lang_CLI();
 		svc.executeApplication(new String[]{
 				"-g"
 		});
 
+		svc = new Application_Lang_CLI();
 		svc.executeApplication(new String[]{
 				"-f"
 		});
 
+		svc = new Application_Lang_CLI();
 		svc.executeApplication(new String[]{
 				"-e"
 		});
 
+		svc = new Application_Lang_CLI();
 		svc.executeApplication(new String[]{
 				"-f", "-e", "-g"
 		});
 	}
+
+	
 
 	@Test
 	public void test_ServiceHelp(){
 		ExamplesExecS execs = new ExamplesExecS();
 		execs.execute(new String[]{
 				Application_Lang_CLI.class.getName(),
-				"-h"
+				"--help"
 		});
 	}
 }
