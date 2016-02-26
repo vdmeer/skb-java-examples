@@ -13,5 +13,7 @@ skb.module.scm.url=https://github.com/vdmeer/skb-java-examples
 skb.module.issueManagement.url=https://github.com/vdmeer/skb-java-examples/issues
 skb.module.issueManagement.system=github
 skb.module.internalDependencies=execs skb-base
+skb.module.externalDependencies.compile=loremipsum
+skb.module.externalDependencies.test=junit
 skb.module.packaging=
 skb.module.appdir.name=examples
