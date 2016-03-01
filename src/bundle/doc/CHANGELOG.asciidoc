@@ -1,11 +1,11 @@
-v0.0.6 - maintenance - 2016-##-##
+v0.0.7 - maintenance - 2016-##-##
 ---------------------------------
 * pushed dependencies
 * fixed problem in Test_Service_Lang_CLI (svc needs re-init since ExecS does option test now)
-* moved external dependencies from skb file into settings, using skb v2.1.0 modules script now
+* removed old module/ settings, added bundle/pm settings
 
 
-v0.0.5 - small features - 2015-07-21
+v0.0.6 - small features - 2015-07-21
 ------------------------------------
 * changed dependency to execs v0.0.8
 * changed dependency to skb-base v0.0.7
