@@ -23,7 +23,7 @@ import de.vandermeer.execs.options.ExecS_CliParser;
  * Example of a simple executable application with command line arguments.
  *
  * @author     Sven van der Meer &lt;vdmeer.sven@mykolab.com&gt;
- * @version    v0.0.6 build 150812 (12-Aug-15) for Java 1.8
+ * @version    v0.0.7-SNAPSHOT build 160301 (01-Mar-16) for Java 1.8
  * @since      v0.0.6
  */
 public class Application_Lang_CLI implements ExecS_Application {
@@ -35,7 +35,7 @@ public class Application_Lang_CLI implements ExecS_Application {
 	public final static String APP_DISPLAY_NAME = "Application-Lang-CLI";
 
 	/** Application version, should be same as the version in the class JavaDoc. */
-	public final static String APP_VERSION = "v0.2.0 build 150826 (26-Aug-15) for Java 1.8";
+	public final static String APP_VERSION = "v0.0.7-SNAPSHOT build 160301 (01-Mar-16) for Java 1.8";
 
 	/** Our CLI parser. */
 	ExecS_CliParser cli;

@@ -17,7 +17,7 @@
  * Some examples and demos of asciilist, asciitable, and some SKB packages.
  *
  * @author     Sven van der Meer &lt;vdmeer.sven@mykolab.com&gt;
- * @version    v0.0.6 build 150812 (12-Aug-15) for Java 1.8
+ * @version    v0.0.7-SNAPSHOT build 160301 (01-Mar-16) for Java 1.8
  * @since      v0.0.1
  */
 package de.vandermeer.skb.examples;
