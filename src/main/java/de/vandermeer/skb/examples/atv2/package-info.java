@@ -17,7 +17,7 @@
  * Examples for {@link de.vandermeer.asciitable.v2.V2_AsciiTable} implemented as a shell and CLI tools.
  *
  * @author     Sven van der Meer &lt;vdmeer.sven@mykolab.com&gt;
- * @version    v0.0.7-SNAPSHOT build 160301 (01-Mar-16) for Java 1.8
+ * @version    v0.0.7 build 160301 (01-Mar-16) for Java 1.8
  * @since      v0.0.1
  */
 package de.vandermeer.skb.examples.atv2;
