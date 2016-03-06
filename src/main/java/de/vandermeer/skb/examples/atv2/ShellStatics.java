@@ -22,7 +22,7 @@ import de.vandermeer.skb.base.shell.SkbShellFactory;
  * Static definitions for {@link V2_AsciiTable_Shell}.
  *
  * @author     Sven van der Meer &lt;vdmeer.sven@mykolab.com&gt;
- * @version    v0.0.7 build 160301 (01-Mar-16) for Java 1.8
+ * @version    v0.0.8-SNAPSHOT build 160304 (04-Mar-16) for Java 1.8
  * @since      v0.0.7
  */
 public abstract class ShellStatics {

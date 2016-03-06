@@ -28,7 +28,7 @@ import de.vandermeer.skb.base.shell.SkbShellFactory;
  * Examples for using {@link V2_AsciiTable} implemented as an SKB shell.
  *
  * @author     Sven van der Meer &lt;vdmeer.sven@mykolab.com&gt;
- * @version    v0.0.7 build 160301 (01-Mar-16) for Java 1.8
+ * @version    v0.0.8-SNAPSHOT build 160304 (04-Mar-16) for Java 1.8
  * @since      v0.0.7
  */
 public final class V2_AsciiTable_Shell implements ExecS_Application {
@@ -40,7 +40,7 @@ public final class V2_AsciiTable_Shell implements ExecS_Application {
 	public final static String APP_DISPLAY_NAME = "AsciiTable V2 Example Shell";
 
 	/** Application version, should be same as the version in the class JavaDoc. */
-	public final static String APP_VERSION = "v0.0.7 build 160301 (01-Mar-16) for Java 1.8";
+	public final static String APP_VERSION = "v0.0.8-SNAPSHOT build 160304 (04-Mar-16) for Java 1.8";
 
 	/** The shell used by this application. */
 	protected SkbShell atsh;

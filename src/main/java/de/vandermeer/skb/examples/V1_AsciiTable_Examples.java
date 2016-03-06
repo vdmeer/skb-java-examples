@@ -24,7 +24,7 @@ import de.vandermeer.execs.options.ApplicationOption;
  * Examples for using {@link V1_AsciiTable}.
  *
  * @author     Sven van der Meer &lt;vdmeer.sven@mykolab.com&gt;
- * @version    v0.0.7 build 160301 (01-Mar-16) for Java 1.8
+ * @version    v0.0.8-SNAPSHOT build 160304 (04-Mar-16) for Java 1.8
  * @since      v0.0.1
  */
 public class V1_AsciiTable_Examples implements ExecS_Application {
@@ -36,7 +36,7 @@ public class V1_AsciiTable_Examples implements ExecS_Application {
 	public final static String APP_DISPLAY_NAME = "ASCII Table V1 Examples";
 
 	/** Application version, should be same as the version in the class JavaDoc. */
-	public final static String APP_VERSION = "v0.0.7 build 160301 (01-Mar-16) for Java 1.8";
+	public final static String APP_VERSION = "v0.0.8-SNAPSHOT build 160304 (04-Mar-16) for Java 1.8";
 
 	@Override
 	public int executeApplication(String[] args) {

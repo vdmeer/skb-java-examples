@@ -23,7 +23,7 @@ import de.vandermeer.execs.options.ApplicationOption;
  * Prints all examples for using {@link V2_AsciiTable} implemented in the {@link V2_AsciiTable_Shell}.
  *
  * @author     Sven van der Meer &lt;vdmeer.sven@mykolab.com&gt;
- * @version    v0.0.7 build 160301 (01-Mar-16) for Java 1.8
+ * @version    v0.0.8-SNAPSHOT build 160304 (04-Mar-16) for Java 1.8
  * @since      v0.0.7
  */
 public class V2_AsciiTable_All implements ExecS_Application {
@@ -35,7 +35,7 @@ public class V2_AsciiTable_All implements ExecS_Application {
 	public final static String APP_DISPLAY_NAME = "All AsciiTable V2 Examples";
 
 	/** Application version, should be same as the version in the class JavaDoc. */
-	public final static String APP_VERSION = "v0.0.7 build 160301 (01-Mar-16) for Java 1.8";
+	public final static String APP_VERSION = "v0.0.8-SNAPSHOT build 160304 (04-Mar-16) for Java 1.8";
 
 	@Override
 	public int executeApplication(String[] args) {
