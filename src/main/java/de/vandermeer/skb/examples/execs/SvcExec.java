@@ -22,7 +22,7 @@ import de.vandermeer.skb.examples.execs.lang.Application_Lang;
  * Example for using ExecS application executor.
  *
  * @author     Sven van der Meer &lt;vdmeer.sven@mykolab.com&gt;
- * @version    v0.0.8-SNAPSHOT build 160304 (04-Mar-16) for Java 1.8
+ * @version    v0.0.8-SNAPSHOT build 160306 (06-Mar-16) for Java 1.8
  * @since      v0.0.1
  */
 public class SvcExec extends ExecS {

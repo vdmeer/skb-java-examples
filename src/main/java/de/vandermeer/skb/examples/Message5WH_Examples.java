@@ -29,7 +29,7 @@ import de.vandermeer.skb.base.message.Message5WH_Builder;
  * Examples on how to use the message object {@link Message5WH}.
  *
  * @author     Sven van der Meer &lt;vdmeer.sven@mykolab.com&gt;
- * @version    v0.0.8-SNAPSHOT build 160304 (04-Mar-16) for Java 1.8
+ * @version    v0.0.8-SNAPSHOT build 160306 (06-Mar-16) for Java 1.8
  * @since      v0.0.1
  */
 public class Message5WH_Examples implements ExecS_Application {
@@ -41,7 +41,7 @@ public class Message5WH_Examples implements ExecS_Application {
 	public final static String APP_DISPLAY_NAME = "Message 5WH Examples";
 
 	/** Application version, should be same as the version in the class JavaDoc. */
-	public final static String APP_VERSION = "v0.0.8-SNAPSHOT build 160304 (04-Mar-16) for Java 1.8";
+	public final static String APP_VERSION = "v0.0.8-SNAPSHOT build 160306 (06-Mar-16) for Java 1.8";
 
 	@Override
 	public int executeApplication(String[] args) {

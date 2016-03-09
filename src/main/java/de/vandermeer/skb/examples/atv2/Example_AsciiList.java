@@ -34,7 +34,7 @@ import de.vandermeer.skb.base.shell.SkbShellFactory;
  * Command interpreter for generating a simple table.
  *
  * @author     Sven van der Meer &lt;vdmeer.sven@mykolab.com&gt;
- * @version    v0.0.8-SNAPSHOT build 160304 (04-Mar-16) for Java 1.8
+ * @version    v0.0.8-SNAPSHOT build 160306 (06-Mar-16) for Java 1.8
  * @since      v0.0.7
  */
 public class Example_AsciiList extends AbstractCommandInterpreter {
@@ -68,7 +68,7 @@ public class Example_AsciiList extends AbstractCommandInterpreter {
 		el2.addItem("el 2 item 2 text");
 		el.addItem(el2);
 		el.setPreLabelIndent(0);
-		el.setListStyle(NestedEnumerateStyles.aLL_alpha_ascii);
+		el.setListStyle(NestedEnumerateStyles.all_alpha_ascii);
 
 		CheckList cl = new CheckList();
 		cl.addItem       ("cl 1 item 1 some text");
