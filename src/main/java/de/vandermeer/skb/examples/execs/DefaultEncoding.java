@@ -17,13 +17,13 @@ package de.vandermeer.skb.examples.execs;
 
 import de.vandermeer.execs.ExecS_Application;
 import de.vandermeer.execs.options.ApplicationOption;
-import de.vandermeer.skb.base.console.Skb_Console;
+import de.vandermeer.skb.interfaces.MessageConsole;
 
 /**
  * Example for console utilities showing console default encoding.
  *
  * @author     Sven van der Meer &lt;vdmeer.sven@mykolab.com&gt;
- * @version    v0.0.8-SNAPSHOT build 160306 (06-Mar-16) for Java 1.8
+ * @version    v0.0.8-SNAPSHOT build 160319 (19-Mar-16) for Java 1.8
  * @since      v0.0.1
  */
 public class DefaultEncoding implements ExecS_Application {
@@ -35,11 +35,11 @@ public class DefaultEncoding implements ExecS_Application {
 	public final static String APP_DISPLAY_NAME = "Default-Encoding";
 
 	/** Application version, should be same as the version in the class JavaDoc. */
-	public final static String APP_VERSION = "v0.0.8-SNAPSHOT build 160306 (06-Mar-16) for Java 1.8";
+	public final static String APP_VERSION = "v0.0.8-SNAPSHOT build 160319 (19-Mar-16) for Java 1.8";
 
 	@Override
 	public int executeApplication(String[] arg0) {
-		System.out.println(Skb_Console.getDefaultEncoding());
+		System.out.println(MessageConsole.getDefaultEncoding());
 		System.out.println();
 		return 0;
 	}

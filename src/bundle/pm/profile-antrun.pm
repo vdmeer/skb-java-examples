@@ -27,14 +27,6 @@
                                 </fileset>
                             </replaceregexp>
 
-                            <replaceregexp byline="true" encoding="${encoding}">
-                                <regexp pattern="import de.vandermeer.asciilist.StandardExample;"/>
-                                <substitution expression="import de.vandermeer.skb.examples.StandardExample;"/>
-                                <fileset dir="src/main/java/de/vandermeer/skb/examples/asciilist" >
-                                    <include name="*.java" />
-                                </fileset>
-                            </replaceregexp>
-
                         </target>
                     </configuration>
                     <goals>
