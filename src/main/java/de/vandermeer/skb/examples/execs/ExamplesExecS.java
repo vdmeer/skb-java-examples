@@ -17,16 +17,17 @@ package de.vandermeer.skb.examples.execs;
 
 import de.vandermeer.execs.ExecS;
 import de.vandermeer.skb.examples.Message5WH_Examples;
-import de.vandermeer.skb.examples.V1_AsciiTable_Examples;
-import de.vandermeer.skb.examples.atv2.V2_AsciiTable_All;
-import de.vandermeer.skb.examples.atv2.V2_AsciiTable_Shell;
+import de.vandermeer.skb.examples.asciiparagraph.AsciiParagraph_Examples;
+import de.vandermeer.skb.examples.asciiparagraph.AsciiParagraph_Shell;
+import de.vandermeer.skb.examples.asciitable.AsciiTable_Examples;
+import de.vandermeer.skb.examples.asciitable.AsciiTable_Shell;
 import de.vandermeer.skb.examples.execs.lang.Application_Lang;
 
 /**
  * An ExecS class for the examples and an example for an ExecS class.
  *
  * @author     Sven van der Meer &lt;vdmeer.sven@mykolab.com&gt;
- * @version    v0.0.8-SNAPSHOT build 160319 (19-Mar-16) for Java 1.8
+ * @version    v0.0.8-SNAPSHOT build 170331 (31-Mar-17) for Java 1.8
  * @since      v0.0.6
  */
 public class ExamplesExecS extends ExecS {
@@ -34,14 +35,16 @@ public class ExamplesExecS extends ExecS {
 	public ExamplesExecS(){
 		super("examples-execs");
 
-		this.addApplication(V1_AsciiTable_Examples.APP_NAME,	V1_AsciiTable_Examples.class);
 		this.addApplication(Message5WH_Examples.APP_NAME,		Message5WH_Examples.class);
 		this.addApplication(DefaultEncoding.APP_NAME,			DefaultEncoding.class);
 		this.addApplication(Application1.APP_NAME,				Application1.class);
 		this.addApplication(Application_Lang.APP_NAME,			Application_Lang.class);
 
-		this.addApplication(V2_AsciiTable_Shell.APP_NAME,		V2_AsciiTable_Shell.class);
-		this.addApplication(V2_AsciiTable_All.APP_NAME,			V2_AsciiTable_All.class);
+		this.addApplication(AsciiTable_Shell.APP_NAME,			AsciiTable_Shell.class);
+		this.addApplication(AsciiTable_Examples.APP_NAME,		AsciiTable_Examples.class);
+
+		this.addApplication(AsciiParagraph_Shell.APP_NAME,		AsciiParagraph_Shell.class);
+		this.addApplication(AsciiParagraph_Examples.APP_NAME,	AsciiParagraph_Examples.class);
 	}
 
 	/**

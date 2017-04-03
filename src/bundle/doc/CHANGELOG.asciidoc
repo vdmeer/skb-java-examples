@@ -1,5 +1,6 @@
 v0.0.8 - ### - 2016-##-##
 ---------------------------------
+* removed AsciiTable V1 examples
 
 
 v0.0.7 - maintenance - 2016-03-01
