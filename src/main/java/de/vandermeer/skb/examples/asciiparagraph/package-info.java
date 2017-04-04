@@ -14,10 +14,10 @@
  */
 
 /**
- * Examples for an AsciiTable implemented as a shell and CLI tools.
+ * Examples for an AsciiParagraph implemented as a shell and CLI tools.
  *
  * @author     Sven van der Meer &lt;vdmeer.sven@mykolab.com&gt;
  * @version    v0.0.8-SNAPSHOT build 170404 (04-Apr-17) for Java 1.8
  * @since      v0.0.8
  */
-package de.vandermeer.skb.examples.asciitable;
+package de.vandermeer.skb.examples.asciiparagraph;

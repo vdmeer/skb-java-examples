@@ -63,7 +63,7 @@ import de.vandermeer.skb.interfaces.StandardExampleAsCmd;
 import de.vandermeer.skb.interfaces.StandardExampleRunner;
 
 /**
- * Examples for using {@link AsciiTable} implemented as an SKB shell.
+ * Examples for using AsciiTable implemented as an SKB shell.
  *
  * @author     Sven van der Meer &lt;vdmeer.sven@mykolab.com&gt;
  * @version    v0.0.8-SNAPSHOT build 170404 (04-Apr-17) for Java 1.8
@@ -187,11 +187,9 @@ public final class AsciiTable_Shell implements ExecS_Application {
 
 	/**
 	 * Creates a new command for the example shell
-	 * @param cmd the command
 	 * @param category command category
-	 * @param help additional help information
 	 * @param example the example to execute
-	 * @return
+	 * @return a new command
 	 */
 	public AbstractCommandInterpreter createCmd(SkbShellCommandCategory category, StandardExampleAsCmd example){
 		return new AbstractCommandInterpreter(SkbShellFactory.newCommand(example.getCmd(), category, example.getDescription(), null)) {

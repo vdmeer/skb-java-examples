@@ -19,7 +19,7 @@ import de.vandermeer.execs.ExecS_Application;
 import de.vandermeer.execs.options.ApplicationOption;
 
 /**
- * Prints all examples for using {@link AsciiTable} implemented in the {@link AsciiTable_Shell}.
+ * Prints all examples for using AsciiTable implemented in the {@link AsciiTable_Shell}.
  *
  * @author     Sven van der Meer &lt;vdmeer.sven@mykolab.com&gt;
  * @version    v0.0.8-SNAPSHOT build 170404 (04-Apr-17) for Java 1.8

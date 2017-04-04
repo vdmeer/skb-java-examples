@@ -41,6 +41,7 @@ public class Example_All extends AbstractCommandInterpreter {
 	/**
 	 * Returns a new interpreter.
 	 * @param shell the shell to run commands in
+	 * @param commands the commands the shell supports
 	 */
 	public Example_All(SkbShell shell, ArrayList<String> commands){
 		super(

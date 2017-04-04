@@ -14,7 +14,7 @@
       -->
     <groupId>de.vandermeer</groupId>
     <artifactId>skb-examples</artifactId>
-    <version>0.0.8-SNAPSHOT</version>
+    <version>0.0.8</version>
     <packaging>jar</packaging>
 
     <!--
@@ -96,25 +96,25 @@
         <dependency>
             <groupId>de.vandermeer</groupId>
             <artifactId>execs</artifactId>
-            <version>0.3.6</version>
+            <version>0.3.7</version>
             <scope>compile</scope>
         </dependency>
         <dependency>
             <groupId>de.vandermeer</groupId>
             <artifactId>skb-base</artifactId>
-            <version>0.1.10-SNAPSHOT</version>
+            <version>0.2.0</version>
             <scope>compile</scope>
         </dependency>
         <dependency>
             <groupId>de.vandermeer</groupId>
             <artifactId>asciilist</artifactId>
-            <version>0.0.4-SNAPSHOT</version>
+            <version>0.0.4</version>
             <scope>compile</scope>
         </dependency>
         <dependency>
             <groupId>de.vandermeer</groupId>
             <artifactId>asciiparagraph</artifactId>
-            <version>0.1.0-SNAPSHOT</version>
+            <version>0.1.0</version>
             <scope>compile</scope>
         </dependency>
         <dependency>
