@@ -2,7 +2,7 @@ package de.vandermeer.skb.examples.execs;
 
 import org.junit.Test;
 
-import de.vandermeer.skb.examples.atv2.V2_AsciiTable_Shell;
+import de.vandermeer.skb.examples.asciitable.AsciiTable_Shell;
 
 public class TestMe {
 

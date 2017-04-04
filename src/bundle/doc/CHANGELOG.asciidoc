@@ -1,3 +1,9 @@
+v0.0.8 - featureadd - 2017-04-04
+--------------------------------
+* removed AsciiTable V1 and V2 examples
+* added AsciiParagraph and AsciiTable examples from new versions
+
+
 v0.0.7 - maintenance - 2016-03-01
 ---------------------------------
 * pushed dependencies
