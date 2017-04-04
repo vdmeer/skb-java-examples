@@ -22,7 +22,7 @@ import de.vandermeer.execs.options.ApplicationOption;
  * Prints all examples for using {@link AsciiTable} implemented in the {@link AsciiTable_Shell}.
  *
  * @author     Sven van der Meer &lt;vdmeer.sven@mykolab.com&gt;
- * @version    v0.0.8-SNAPSHOT build 170331 (31-Mar-17) for Java 1.8
+ * @version    v0.0.8-SNAPSHOT build 170404 (04-Apr-17) for Java 1.8
  * @since      v0.0.7
  */
 public class AsciiTable_Examples implements ExecS_Application {
@@ -34,7 +34,7 @@ public class AsciiTable_Examples implements ExecS_Application {
 	public final static String APP_DISPLAY_NAME = "All AsciiTable Examples";
 
 	/** Application version, should be same as the version in the class JavaDoc. */
-	public final static String APP_VERSION = "v0.0.8-SNAPSHOT build 170331 (31-Mar-17) for Java 1.8";
+	public final static String APP_VERSION = "v0.0.8-SNAPSHOT build 170404 (04-Apr-17) for Java 1.8";
 
 	@Override
 	public int executeApplication(String[] args) {

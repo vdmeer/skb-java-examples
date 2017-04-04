@@ -78,6 +78,6 @@ public class AP_09a_TargetTranslators_LaTeX implements StandardExampleAsCmd {
 
 	@Override
 	public String getID() {
-		return "target LaTeX";
+		return "target-latex";
 	}
 }

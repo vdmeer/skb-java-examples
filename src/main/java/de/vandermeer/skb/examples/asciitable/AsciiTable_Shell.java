@@ -66,7 +66,7 @@ import de.vandermeer.skb.interfaces.StandardExampleRunner;
  * Examples for using {@link AsciiTable} implemented as an SKB shell.
  *
  * @author     Sven van der Meer &lt;vdmeer.sven@mykolab.com&gt;
- * @version    v0.0.8-SNAPSHOT build 170331 (31-Mar-17) for Java 1.8
+ * @version    v0.0.8-SNAPSHOT build 170404 (04-Apr-17) for Java 1.8
  * @since      v0.0.7
  */
 public final class AsciiTable_Shell implements ExecS_Application {
@@ -78,7 +78,7 @@ public final class AsciiTable_Shell implements ExecS_Application {
 	public final static String APP_DISPLAY_NAME = "AsciiTable Example Shell";
 
 	/** Application version, should be same as the version in the class JavaDoc. */
-	public final static String APP_VERSION = "v0.0.8-SNAPSHOT build 170331 (31-Mar-17) for Java 1.8";
+	public final static String APP_VERSION = "v0.0.8-SNAPSHOT build 170404 (04-Apr-17) for Java 1.8";
 
 	/** The shell used by this application. */
 	protected SkbShell atsh;

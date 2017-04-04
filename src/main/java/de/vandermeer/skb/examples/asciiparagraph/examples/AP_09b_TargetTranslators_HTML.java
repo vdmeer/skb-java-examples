@@ -79,6 +79,6 @@ public class AP_09b_TargetTranslators_HTML implements StandardExampleAsCmd {
 
 	@Override
 	public String getID() {
-		return "translate-html";
+		return "target-html";
 	}
 }

@@ -23,7 +23,7 @@ import de.vandermeer.skb.interfaces.MessageConsole;
  * Example for console utilities showing console default encoding.
  *
  * @author     Sven van der Meer &lt;vdmeer.sven@mykolab.com&gt;
- * @version    v0.0.8-SNAPSHOT build 170331 (31-Mar-17) for Java 1.8
+ * @version    v0.0.8-SNAPSHOT build 170404 (04-Apr-17) for Java 1.8
  * @since      v0.0.1
  */
 public class DefaultEncoding implements ExecS_Application {
@@ -35,7 +35,7 @@ public class DefaultEncoding implements ExecS_Application {
 	public final static String APP_DISPLAY_NAME = "Default-Encoding";
 
 	/** Application version, should be same as the version in the class JavaDoc. */
-	public final static String APP_VERSION = "v0.0.8-SNAPSHOT build 170331 (31-Mar-17) for Java 1.8";
+	public final static String APP_VERSION = "v0.0.8-SNAPSHOT build 170404 (04-Apr-17) for Java 1.8";
 
 	@Override
 	public int executeApplication(String[] arg0) {
