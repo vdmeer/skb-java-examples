@@ -1,9 +1,5 @@
 package de.vandermeer.skb.examples.execs;
 
-import org.junit.Test;
-
-import de.vandermeer.skb.examples.asciitable.AsciiTable_Shell;
-
 public class TestMe {
 
 //	@Test

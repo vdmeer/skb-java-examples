@@ -28,7 +28,7 @@ public class Test_AsciiTable_Shell {
 
 	@Test
 	public void runAll(){
-		AsciiTable_Shell atsh = new AsciiTable_Shell();
+		//AsciiTable_Shell atsh = new AsciiTable_Shell();
 		//atsh.executeApplication(new String[]{});
 	}
 

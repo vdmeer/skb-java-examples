@@ -17,7 +17,6 @@ package de.vandermeer.skb.examples.asciiparagraph;
 
 import java.util.ArrayList;
 
-import de.vandermeer.asciiparagraph.AsciiParagraph;
 import de.vandermeer.asciithemes.a7.A7_Grids;
 import de.vandermeer.execs.ExecS_Application;
 import de.vandermeer.execs.options.ApplicationOption;
