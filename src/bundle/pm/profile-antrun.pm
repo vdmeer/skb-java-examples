@@ -5,7 +5,7 @@
 
             <plugin>
                 <artifactId>maven-antrun-plugin</artifactId>
-                <version>1.8</version>
+                <version>${pm.version.maven-antrun-plugin}</version>
                 <executions>
 
                     <!-- copy the ASCII List examples -->
