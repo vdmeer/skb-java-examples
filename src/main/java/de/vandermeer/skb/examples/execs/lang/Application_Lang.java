@@ -15,83 +15,78 @@
 
 package de.vandermeer.skb.examples.execs.lang;
 
-import de.vandermeer.execs.ExecS_Application;
-import de.vandermeer.execs.options.ApplicationOption;
+import de.vandermeer.execs.AbstractAppliction;
+import de.vandermeer.execs.options.simple.AO_HelpSimple;
+import de.vandermeer.skb.interfaces.application.ApoCliParser;
 
 /**
- * Example of a simple application with command line arguments.
+ * Example of a simple executable application with command line arguments.
  *
  * @author     Sven van der Meer &lt;vdmeer.sven@mykolab.com&gt;
  * @version    v0.0.8 build 170404 (04-Apr-17) for Java 1.8
- * @since      v0.0.1
+ * @since      v0.0.6
  */
-public class Application_Lang implements ExecS_Application {
+public class Application_Lang extends AbstractAppliction {
 
 	/** Application name. */
-	public final static String APP_NAME = "app-lang";
+	public final static String APP_NAME = "app-lang-cli";
 
 	/** Application display name. */
-	public final static String APP_DISPLAY_NAME = "Application-Lang";
+	public final static String APP_DISPLAY_NAME = "Application-Lang-CLI";
 
 	/** Application version, should be same as the version in the class JavaDoc. */
 	public final static String APP_VERSION = "v0.0.8 build 170404 (04-Apr-17) for Java 1.8";
 
-	@Override
-	public int executeApplication(String[] args) {
-		if(args.length==0){
-			this.appHelpScreen();
-			return -1;
-		}
+	/** Our option for German. */
+	AO_G optionG = new AO_G();
 
-		switch(args[0]){
-			case "-g":
-				System.out.println("Hallo, hier ist die Anwendung Sprache.");
-				break;
-			case "-f":
-				System.out.println("Bonjour, ceci est le application lang.");
-				break;
-			case "-e":
-				System.out.println("Hi, this is application language.");
-				break;
-			default:
-				System.out.println(this.getAppName() + ": unknown option: " + args[0]);
-				return -1;
-		}
-		return 0;
+	/** Our option for French. */
+	AO_F optionF = new AO_F();
+
+	/** Our option for English. */
+	AO_E optionE = new AO_E();
+
+	/**
+	 * Returns a new language application.
+	 */
+	public Application_Lang(){
+		super(APP_NAME, ApoCliParser.defaultParser(), new AO_HelpSimple('h', "simple help"), null, null);
+
+		this.getCliParser().getOptions().addOption(this.optionG);
+		this.getCliParser().getOptions().addOption(this.optionF);
+		this.getCliParser().getOptions().addOption(this.optionE);
 	}
 
 	@Override
-	public void appHelpScreen() {
-		System.out.println(this.getAppName() + " help:");
-		System.out.println("- this is a simple application called " + this.getAppName());
-
-		System.out.println("-g for a German greeting");
-		System.out.println("-e for an English greeting");
-		System.out.println("-f for a French greeting");
+	public void runApplication() {
+		if(this.optionG.inCli()){
+			System.out.println("Hallo, hier ist die Anwendung Sprache.");
+		}
+		if(this.optionF.inCli()){
+			System.out.println("Bonjour, ceci est le application lang.");
+		}
+		if(this.optionE.inCli()){
+			System.out.println("Hi, this is application language.");
+		}
 	}
 
 	@Override
-	public String getAppName() {
+	public String getName() {
 		return APP_NAME;
 	}
 
 	@Override
-	public String getAppDisplayName(){
+	public String getDisplayName(){
 		return APP_DISPLAY_NAME;
 	}
 
 	@Override
-	public String getAppDescription() {
-		return "Application example with language options";
+	public String getDescription() {
+		return "Application example with language options and CLI options";
 	}
 
 	@Override
-	public ApplicationOption<?>[] getAppOptions() {
-		return null;
-	}
-
-	@Override
-	public String getAppVersion() {
+	public String getVersion() {
 		return APP_VERSION;
 	}
 }

@@ -13,23 +13,23 @@
  * limitations under the License.
  */
 
-package de.vandermeer.skb.examples.asciitable;
+package de.vandermeer.skb.examples.asciiparagraph;
 
 import org.junit.Test;
 
 /**
- * Tests for {@link AsciiTable_Shell}.
+ * Tests for {@link AsciiParagraph_Examples}.
  *
  * @author     Sven van der Meer &lt;vdmeer.sven@mykolab.com&gt;
  * @version    v0.0.8 build 170404 (04-Apr-17) for Java 1.8
  * @since      v0.0.1
  */
-public class Test_AsciiTable_Shell {
+public class Test_AsciiParagraph_Examples {
 
 	@Test
 	public void runAll(){
-//		AsciiTable_Shell atsh = new AsciiTable_Shell();
-//		atsh.executeApplication(new String[]{});
+		AsciiParagraph_Examples atex = new AsciiParagraph_Examples();
+		atex.executeApplication(new String[]{});
 	}
 
 }

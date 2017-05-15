@@ -17,7 +17,7 @@ package de.vandermeer.skb.examples.asciilist.examples;
 
 import org.apache.commons.lang3.text.StrBuilder;
 
-import de.vandermeer.skb.interfaces.StandardExampleAsCmd;
+import de.vandermeer.skb.interfaces.examples.StandardExampleAsCmd;
 
 /**
  * AsciiList example for nested lists.
@@ -102,7 +102,7 @@ public class AL_Example_NestedLists implements StandardExampleAsCmd {
 	}
 
 	@Override
-	public String getID() {
+	public String getName() {
 		// TODO Auto-generated method stub
 		return null;
 	}

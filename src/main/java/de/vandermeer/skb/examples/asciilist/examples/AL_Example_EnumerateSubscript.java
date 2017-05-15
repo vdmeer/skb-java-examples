@@ -19,7 +19,7 @@ import org.apache.commons.lang3.text.StrBuilder;
 
 import de.vandermeer.asciilist.enumerate.EnumerateList;
 import de.vandermeer.asciithemes.u8.U8_EnumerateLists;
-import de.vandermeer.skb.interfaces.StandardExampleAsCmd;
+import de.vandermeer.skb.interfaces.examples.StandardExampleAsCmd;
 
 /**
  * AsciiList example for an enumerate list with subscripts.
@@ -69,7 +69,7 @@ public class AL_Example_EnumerateSubscript implements StandardExampleAsCmd {
 	}
 
 	@Override
-	public String getID() {
+	public String getName() {
 		return "enumerate";
 	}
 }

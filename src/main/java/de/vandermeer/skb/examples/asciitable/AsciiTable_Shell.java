@@ -17,17 +17,15 @@ package de.vandermeer.skb.examples.asciitable;
 
 import java.util.ArrayList;
 
-import de.vandermeer.asciithemes.a7.A7_Grids;
-import de.vandermeer.execs.ExecS_Application;
-import de.vandermeer.execs.options.ApplicationOption;
-import de.vandermeer.skb.base.managers.MessageMgr;
-import de.vandermeer.skb.base.shell.AbstractCommandInterpreter;
-import de.vandermeer.skb.base.shell.Ci_Exit;
-import de.vandermeer.skb.base.shell.Ci_HelpTable;
-import de.vandermeer.skb.base.shell.LineParser;
-import de.vandermeer.skb.base.shell.SkbShell;
-import de.vandermeer.skb.base.shell.SkbShellCommandCategory;
-import de.vandermeer.skb.base.shell.SkbShellFactory;
+import de.vandermeer.execs.AbstractAppliction;
+import de.vandermeer.shell.SkbShell;
+import de.vandermeer.shell.commands.simple.SimpleBye;
+import de.vandermeer.shell.commands.simple.SimpleExampleRunner;
+import de.vandermeer.shell.commands.simple.SimpleExit;
+import de.vandermeer.shell.commands.simple.SimpleH;
+import de.vandermeer.shell.commands.simple.SimpleHelp;
+import de.vandermeer.shell.commands.simple.SimpleQM;
+import de.vandermeer.shell.commands.simple.SimpleQuit;
 import de.vandermeer.skb.examples.asciitable.examples.AT_00_Getting_Started;
 import de.vandermeer.skb.examples.asciitable.examples.AT_00b_WidthBehavior;
 import de.vandermeer.skb.examples.asciitable.examples.AT_01b_1Column;
@@ -59,8 +57,7 @@ import de.vandermeer.skb.examples.asciitable.examples.AT_08b_TargetTranslator_HT
 import de.vandermeer.skb.examples.asciitable.examples.AT_09a_URIs;
 import de.vandermeer.skb.examples.asciitable.examples.AT_09b_ConditionalLinebreak;
 import de.vandermeer.skb.examples.asciitable.examples.AT_09c_ListWithLinebreaks;
-import de.vandermeer.skb.interfaces.StandardExampleAsCmd;
-import de.vandermeer.skb.interfaces.StandardExampleRunner;
+import de.vandermeer.skb.interfaces.application.ApoCliParser;
 
 /**
  * Examples for using AsciiTable implemented as an SKB shell.
@@ -69,7 +66,7 @@ import de.vandermeer.skb.interfaces.StandardExampleRunner;
  * @version    v0.0.8 build 170404 (04-Apr-17) for Java 1.8
  * @since      v0.0.7
  */
-public final class AsciiTable_Shell implements ExecS_Application {
+public final class AsciiTable_Shell extends AbstractAppliction {
 
 	/** Application name. */
 	public final static String APP_NAME = "asciitable-shell";
@@ -90,119 +87,86 @@ public final class AsciiTable_Shell implements ExecS_Application {
 	 * Returns a new shell.
 	 */
 	public AsciiTable_Shell(){
-		this.atsh = SkbShellFactory.newShell(APP_NAME, true);
+		super(APP_NAME, ApoCliParser.defaultParser(), null, null, null);
+		this.atsh = new SkbShell(APP_NAME, APP_DISPLAY_NAME, APP_VERSION, this.getDescription());
 
-		this.atsh.addCommandInterpreter(new Ci_Exit());
-		this.atsh.addCommandInterpreter(new Ci_HelpTable(atsh, A7_Grids.minusBarPlusEquals()));
+		this.atsh.addCommand(new SimpleH(ShellCategories.STD));
+		this.atsh.addCommand(new SimpleHelp(ShellCategories.STD));
+		this.atsh.addCommand(new SimpleQM(ShellCategories.STD));
 
-		this.addCommand(ShellStatics.BASIC_COMMANDS, new AT_00_Getting_Started());
-		this.addCommand(ShellStatics.WIDTH_COMMANDS, new AT_00b_WidthBehavior());
+		this.atsh.addCommand(new SimpleExit(ShellCategories.STD));
+		this.atsh.addCommand(new SimpleQuit(ShellCategories.STD));
+		this.atsh.addCommand(new SimpleBye(ShellCategories.STD));
 
-		this.addCommand(ShellStatics.BASIC_COMMANDS, new AT_01b_1Column());
-		this.addCommand(ShellStatics.BASIC_COMMANDS, new AT_01c_2Columns());
-		this.addCommand(ShellStatics.BASIC_COMMANDS, new AT_01d_3Columns());
-		this.addCommand(ShellStatics.BASIC_COMMANDS, new AT_01e_4Columns());
-		this.addCommand(ShellStatics.BASIC_COMMANDS, new AT_01f_5Columns());
+//		this.atsh.addCommandInterpreter(new Ci_HelpTable(atsh, A7_Grids.minusBarPlusEquals()));
 
-		this.addCommand(ShellStatics.BASIC_COMMANDS, new AT_02_ColSpan());
+		this.atsh.addCommand(new SimpleExampleRunner(new AT_00_Getting_Started(), ShellCategories.BASIC));
+		this.atsh.addCommand(new SimpleExampleRunner(new AT_00b_WidthBehavior(), ShellCategories.WIDTH));
 
-		this.addCommand(ShellStatics.BASIC_COMMANDS, new AT_03_AlignmentOptions());
-		this.addCommand(ShellStatics.BASIC_COMMANDS, new AT_03a_AlignmentTable());
-		this.addCommand(ShellStatics.BASIC_COMMANDS, new AT_03b_AlignmentRow());
-		this.addCommand(ShellStatics.BASIC_COMMANDS, new AT_03c_AlignmentCell());
+		this.atsh.addCommand(new SimpleExampleRunner(new AT_01b_1Column(), ShellCategories.COLUMNS));
+		this.atsh.addCommand(new SimpleExampleRunner(new AT_01c_2Columns(), ShellCategories.COLUMNS));
+		this.atsh.addCommand(new SimpleExampleRunner(new AT_01d_3Columns(), ShellCategories.COLUMNS));
+		this.atsh.addCommand(new SimpleExampleRunner(new AT_01e_4Columns(), ShellCategories.COLUMNS));
+		this.atsh.addCommand(new SimpleExampleRunner(new AT_01f_5Columns(), ShellCategories.COLUMNS));
 
-		this.addCommand(ShellStatics.PADDING_COMMANDS, new AT_04a_Padding_Table());
-		this.addCommand(ShellStatics.PADDING_COMMANDS, new AT_04b_Padding_Row());
-		this.addCommand(ShellStatics.PADDING_COMMANDS, new AT_04c_Padding_Cell());
+		this.atsh.addCommand(new SimpleExampleRunner(new AT_02_ColSpan(), ShellCategories.COLUMNS));
 
-		this.addCommand(ShellStatics.BASIC_COMMANDS, new AT_05_MarginBehavior());
+		this.atsh.addCommand(new SimpleExampleRunner(new AT_03_AlignmentOptions(), ShellCategories.COLUMNS_CONTENT));
+		this.atsh.addCommand(new SimpleExampleRunner(new AT_03a_AlignmentTable(), ShellCategories.COLUMNS_CONTENT));
+		this.atsh.addCommand(new SimpleExampleRunner(new AT_03b_AlignmentRow(), ShellCategories.COLUMNS_CONTENT));
+		this.atsh.addCommand(new SimpleExampleRunner(new AT_03c_AlignmentCell(), ShellCategories.COLUMNS_CONTENT));
 
-		this.addCommand(ShellStatics.BASIC_COMMANDS, new AT_06a_Grids());
-		this.addCommand(ShellStatics.BASIC_COMMANDS, new AT_06b_GridRuleStyle());
-		this.addCommand(ShellStatics.BASIC_COMMANDS, new AT_06c_GridThemes());
-		this.addCommand(ShellStatics.BASIC_COMMANDS, new AT_06d_NewGrid());
+		this.atsh.addCommand(new SimpleExampleRunner(new AT_04a_Padding_Table(), ShellCategories.PADDING));
+		this.atsh.addCommand(new SimpleExampleRunner(new AT_04b_Padding_Row(), ShellCategories.PADDING));
+		this.atsh.addCommand(new SimpleExampleRunner(new AT_04c_Padding_Cell(), ShellCategories.PADDING));
 
-		this.addCommand(ShellStatics.WIDTH_COMMANDS, new AT_07a_Width_AbsoluteEven());
-		this.addCommand(ShellStatics.WIDTH_COMMANDS, new AT_07b_Width_Fixed());
-		this.addCommand(ShellStatics.WIDTH_COMMANDS, new AT_07c_LongestLine());
-		this.addCommand(ShellStatics.WIDTH_COMMANDS, new AT_07d_LongestWord());
-		this.addCommand(ShellStatics.WIDTH_COMMANDS, new AT_07e_LongestWordMax());
-		this.addCommand(ShellStatics.WIDTH_COMMANDS, new AT_07f_LongestWordMin());
+		this.atsh.addCommand(new SimpleExampleRunner(new AT_05_MarginBehavior(), ShellCategories.MARGINS));
 
-		this.addCommand(ShellStatics.BASIC_COMMANDS, new AT_08a_TargetTranslator_Latex());
-		this.addCommand(ShellStatics.BASIC_COMMANDS, new AT_08b_TargetTranslator_HTML());
+		this.atsh.addCommand(new SimpleExampleRunner(new AT_06a_Grids(), ShellCategories.THEME));
+		this.atsh.addCommand(new SimpleExampleRunner(new AT_06b_GridRuleStyle(), ShellCategories.THEME));
+		this.atsh.addCommand(new SimpleExampleRunner(new AT_06c_GridThemes(), ShellCategories.THEME));
+		this.atsh.addCommand(new SimpleExampleRunner(new AT_06d_NewGrid(), ShellCategories.THEME));
 
-		this.addCommand(ShellStatics.BASIC_COMMANDS, new AT_09a_URIs());
-		this.addCommand(ShellStatics.BASIC_COMMANDS, new AT_09b_ConditionalLinebreak());
-		this.addCommand(ShellStatics.BASIC_COMMANDS, new AT_09c_ListWithLinebreaks());
+		this.atsh.addCommand(new SimpleExampleRunner(new AT_07a_Width_AbsoluteEven(), ShellCategories.WIDTH));
+		this.atsh.addCommand(new SimpleExampleRunner(new AT_07b_Width_Fixed(), ShellCategories.WIDTH));
+		this.atsh.addCommand(new SimpleExampleRunner(new AT_07c_LongestLine(), ShellCategories.WIDTH));
+		this.atsh.addCommand(new SimpleExampleRunner(new AT_07d_LongestWord(), ShellCategories.WIDTH));
+		this.atsh.addCommand(new SimpleExampleRunner(new AT_07e_LongestWordMax(), ShellCategories.WIDTH));
+		this.atsh.addCommand(new SimpleExampleRunner(new AT_07f_LongestWordMin(), ShellCategories.WIDTH));
 
-		this.atsh.addCommandInterpreter(new Example_All(this.atsh, this.commands));
+		this.atsh.addCommand(new SimpleExampleRunner(new AT_08a_TargetTranslator_Latex(), ShellCategories.TRANSLATORS));
+		this.atsh.addCommand(new SimpleExampleRunner(new AT_08b_TargetTranslator_HTML(), ShellCategories.TRANSLATORS));
+
+		this.atsh.addCommand(new SimpleExampleRunner(new AT_09a_URIs(), ShellCategories.MISC));
+		this.atsh.addCommand(new SimpleExampleRunner(new AT_09b_ConditionalLinebreak(), ShellCategories.MISC));
+		this.atsh.addCommand(new SimpleExampleRunner(new AT_09c_ListWithLinebreaks(), ShellCategories.MISC));
+
+		this.atsh.addCommand(new Cmd_AllExamples(this.atsh.getCommands(), ShellCategories.ALL));
 	}
 
 	@Override
-	public int executeApplication(String[] args) {
-		return this.atsh.runShell();
+	public void runApplication() {
+		this.atsh.runShell();
 	}
 
 	@Override
-	public String getAppName() {
+	public String getName() {
 		return APP_NAME;
 	}
 
 	@Override
-	public String getAppDisplayName() {
+	public String getDisplayName() {
 		return APP_DISPLAY_NAME;
 	}
 
 	@Override
-	public void appHelpScreen(){
-		System.out.println();
-		System.out.println("The AsciiTable Example Shell");
-	}
-
-	@Override
-	public String getAppDescription() {
+	public String getDescription() {
 		return "The AsciiTable Example Shell";
 	}
 
 	@Override
-	public String getAppVersion() {
+	public String getVersion() {
 		return APP_VERSION;
 	}
 
-	@Override
-	public ApplicationOption<?>[] getAppOptions() {
-		return null;
-	}
-
-	/**
-	 * Adds a new command for an example.
-	 * @param category the example category
-	 * @param example the example to add
-	 */
-	protected final void addCommand(SkbShellCommandCategory category, StandardExampleAsCmd example){
-		this.commands.add(example.getCmd());
-		this.atsh.addCommandInterpreter(this.createCmd(category, example));
-	}
-
-	/**
-	 * Creates a new command for the example shell
-	 * @param category command category
-	 * @param example the example to execute
-	 * @return a new command
-	 */
-	public AbstractCommandInterpreter createCmd(SkbShellCommandCategory category, StandardExampleAsCmd example){
-		return new AbstractCommandInterpreter(SkbShellFactory.newCommand(example.getCmd(), category, example.getDescription(), null)) {
-			@Override
-			public int interpretCommand(String command, LineParser lp, MessageMgr mm) {
-				if(command.equals(example.getCmd())){
-					StandardExampleRunner ser = new StandardExampleRunner() {};
-					System.out.println("\n\n");
-					ser.runExampleWithCode(example);
-					return 0;
-				}
-				return -1;
-			}
-		};
-	}
 }

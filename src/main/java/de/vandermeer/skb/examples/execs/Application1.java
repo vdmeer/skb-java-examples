@@ -15,8 +15,8 @@
 
 package de.vandermeer.skb.examples.execs;
 
-import de.vandermeer.execs.ExecS_Application;
-import de.vandermeer.execs.options.ApplicationOption;
+import de.vandermeer.execs.AbstractAppliction;
+import de.vandermeer.skb.interfaces.application.ApoCliParser;
 
 /**
  * Example of a simple application.
@@ -25,7 +25,7 @@ import de.vandermeer.execs.options.ApplicationOption;
  * @version    v0.0.8 build 170404 (04-Apr-17) for Java 1.8
  * @since      v0.0.1
  */
-public class Application1 implements ExecS_Application {
+public class Application1 extends AbstractAppliction {
 
 	/** Application name. */
 	public final static String APP_NAME = "app-1";
@@ -36,41 +36,35 @@ public class Application1 implements ExecS_Application {
 	/** Application version, should be same as the version in the class JavaDoc. */
 	public final static String APP_VERSION = "v0.0.8 build 170404 (04-Apr-17) for Java 1.8";
 
+	/**
+	 * Creates the example object.
+	 */
+	public Application1(){
+		super(APP_NAME, ApoCliParser.defaultParser(), null, null, null);
+	}
+
 	@Override
-	public int executeApplication(String[] args) {
+	public void runApplication() {
 		System.out.println("Application1 executed");
-		return 0;
 	}
 
 	@Override
-	public void appHelpScreen() {
-		System.out.println("Application1 help:");
-		System.out.println("- This is a simple application called Application1");
-		System.out.println("- no arguments, does nothing");
-	}
-
-	@Override
-	public String getAppName() {
+	public String getName() {
 		return APP_NAME;
 	}
 
 	@Override
-	public String getAppDisplayName(){
+	public String getDisplayName(){
 		return APP_DISPLAY_NAME;
 	}
 
 	@Override
-	public String getAppDescription() {
-		return "Example Application1";
+	public String getDescription() {
+		return "Example Application1, simply to show how to build an application";
 	}
 
 	@Override
-	public ApplicationOption<?>[] getAppOptions() {
-		return null;
-	}
-
-	@Override
-	public String getAppVersion() {
+	public String getVersion() {
 		return APP_VERSION;
 	}
 }

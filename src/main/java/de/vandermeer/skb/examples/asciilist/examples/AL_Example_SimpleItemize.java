@@ -19,7 +19,7 @@ import org.apache.commons.lang3.text.StrBuilder;
 
 import de.vandermeer.asciilist.itemize.ItemizeList;
 import de.vandermeer.asciithemes.u8.U8_ItemizeLists;
-import de.vandermeer.skb.interfaces.StandardExampleAsCmd;
+import de.vandermeer.skb.interfaces.examples.StandardExampleAsCmd;
 
 /**
  * AsciiList example for simple itemize lists.
@@ -100,7 +100,7 @@ public class AL_Example_SimpleItemize implements StandardExampleAsCmd {
 	}
 
 	@Override
-	public String getID() {
+	public String getName() {
 		return "itemize";
 	}
 }

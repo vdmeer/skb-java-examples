@@ -15,15 +15,11 @@
 
 package de.vandermeer.skb.examples;
 
-import org.stringtemplate.v4.STGroup;
-import org.stringtemplate.v4.STGroupString;
-
-import de.vandermeer.execs.ExecS_Application;
-import de.vandermeer.execs.options.ApplicationOption;
-import de.vandermeer.skb.base.managers.MessageRenderer;
-import de.vandermeer.skb.base.message.E_MessageType;
-import de.vandermeer.skb.base.message.Message5WH;
-import de.vandermeer.skb.base.message.Message5WH_Builder;
+import de.vandermeer.execs.AbstractAppliction;
+import de.vandermeer.skb.interfaces.MessageType;
+import de.vandermeer.skb.interfaces.application.ApoCliParser;
+import de.vandermeer.skb.interfaces.messages.Message5WH;
+import de.vandermeer.skb.interfaces.messages.Message5WH_Builder;
 
 /**
  * Examples on how to use the message object {@link Message5WH}.
@@ -32,7 +28,7 @@ import de.vandermeer.skb.base.message.Message5WH_Builder;
  * @version    v0.0.8 build 170404 (04-Apr-17) for Java 1.8
  * @since      v0.0.1
  */
-public class Message5WH_Examples implements ExecS_Application {
+public class Message5WH_Examples extends AbstractAppliction {
 
 	/** Application name. */
 	public final static String APP_NAME = "message-5wh-examples";
@@ -43,8 +39,15 @@ public class Message5WH_Examples implements ExecS_Application {
 	/** Application version, should be same as the version in the class JavaDoc. */
 	public final static String APP_VERSION = "v0.0.8 build 170404 (04-Apr-17) for Java 1.8";
 
+	/**
+	 * Creates the example object.
+	 */
+	public Message5WH_Examples(){
+		super(APP_NAME, ApoCliParser.defaultParser(), null, null, null);
+	}
+
 	@Override
-	public int executeApplication(String[] args) {
+	public void runApplication() {
 		//fill a new message object with information
 		Message5WH msg = new Message5WH_Builder()
 			.setWho("from "+this.getClass().getSimpleName())
@@ -54,7 +57,7 @@ public class Message5WH_Examples implements ExecS_Application {
 			.addWhy("as a demo")
 			.addHow("added to the class JavaDoc")
 			.setReporter("The Author")
-			.setType(E_MessageType.INFO)
+			.setType(MessageType.INFO)
 			.build()
 		;
 
@@ -63,63 +66,48 @@ public class Message5WH_Examples implements ExecS_Application {
 
 		System.out.println("\n");
 
-		//define a new template for a message
-		final String newTemplate =
-				"where(location, line, column) ::= <<\n" +
-				"<location;separator=\".\"><if(line&&column)> <line>:<column><elseif(!line&&!column)><elseif(!line)> -:<column><elseif(!column)> <line>:-<endif>\n"+
-				">>\n\n" +
-				"message5wh(reporter, type, who, when, where, what, why, how) ::= <<\n" +
-					"<if(reporter)>Reporter = <reporter><endif>\n" +
-					"<if(type)>Type     = <type><endif>\n" +
-					"<if(who)>Who      = <who><endif>\n" +
-					"<if(when)>When     = <when><endif>\n" +
-					"<if(where)>Where    = <where><endif>\n" +
-					"<if(what)>What     = <what><endif>\n" +
-					"<if(why)>Why      = <why><endif>\n" +
-					"<if(how)>How      = <how><endif>\n" +
-				">>\n";
+//		//define a new template for a message
+//		final String newTemplate =
+//				"where(location, line, column) ::= <<\n" +
+//				"<location;separator=\".\"><if(line&&column)> <line>:<column><elseif(!line&&!column)><elseif(!line)> -:<column><elseif(!column)> <line>:-<endif>\n"+
+//				">>\n\n" +
+//				"message5wh(reporter, type, who, when, where, what, why, how) ::= <<\n" +
+//					"<if(reporter)>Reporter = <reporter><endif>\n" +
+//					"<if(type)>Type     = <type><endif>\n" +
+//					"<if(who)>Who      = <who><endif>\n" +
+//					"<if(when)>When     = <when><endif>\n" +
+//					"<if(where)>Where    = <where><endif>\n" +
+//					"<if(what)>What     = <what><endif>\n" +
+//					"<if(why)>Why      = <why><endif>\n" +
+//					"<if(how)>How      = <how><endif>\n" +
+//				">>\n";
+//
+//		//set a new group and add group to message
+//		STGroup stg = new STGroupString(newTemplate);
+//
+//		//print same message with new template
+//		System.out.println(ren.render(msg));
 
-		//set a new group and add group to message
-		STGroup stg = new STGroupString(newTemplate);
-
-		//create a new renderer
-		MessageRenderer ren = new MessageRenderer(stg);
-
-		//print same message with new template
-		System.out.println(ren.render(msg));
-
-		return 0;
+		System.out.println(msg.render());
 	}
 
 	@Override
-	public void appHelpScreen() {
-		System.out.println("Messages:");
-		System.out.println("Prints examples for Message5WH (skb-base), using the default and custom templates.");
-
-	}
-
-	@Override
-	public String getAppName() {
+	public String getName() {
 		return APP_NAME;
 	}
 
 	@Override
-	public String getAppDisplayName(){
+	public String getDisplayName(){
 		return APP_DISPLAY_NAME;
 	}
 
 	@Override
-	public String getAppDescription() {
+	public String getDescription() {
 		return "Prints examples for Message5WH (skb-base), using the default and custom templates.";
 	}
 
 	@Override
-	public ApplicationOption<?>[] getAppOptions() {
-		return null;
-	}
-
-	@Override
-	public String getAppVersion() {
+	public String getVersion() {
 		return APP_VERSION;
 	}
 }

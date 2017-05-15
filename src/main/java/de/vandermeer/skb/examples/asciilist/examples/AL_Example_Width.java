@@ -21,7 +21,7 @@ import de.vandermeer.asciilist.enumerate.EnumerateList;
 import de.vandermeer.asciilist.itemize.ItemizeList;
 import de.vandermeer.asciithemes.a7.A7_EnumerateLists;
 import de.vandermeer.asciithemes.a7.A7_ItemizeLists;
-import de.vandermeer.skb.interfaces.StandardExampleAsCmd;
+import de.vandermeer.skb.interfaces.examples.StandardExampleAsCmd;
 
 /**
  * AsciiList example with different width.
@@ -111,7 +111,7 @@ public class AL_Example_Width implements StandardExampleAsCmd {
 	}
 
 	@Override
-	public String getID() {
+	public String getName() {
 		return "width";
 	}
 }

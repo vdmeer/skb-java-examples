@@ -15,8 +15,8 @@
 
 package de.vandermeer.skb.examples.asciitable;
 
-import de.vandermeer.execs.ExecS_Application;
-import de.vandermeer.execs.options.ApplicationOption;
+import de.vandermeer.execs.AbstractAppliction;
+import de.vandermeer.skb.interfaces.application.ApoCliParser;
 
 /**
  * Prints all examples for using AsciiTable implemented in the {@link AsciiTable_Shell}.
@@ -25,7 +25,7 @@ import de.vandermeer.execs.options.ApplicationOption;
  * @version    v0.0.8 build 170404 (04-Apr-17) for Java 1.8
  * @since      v0.0.7
  */
-public class AsciiTable_Examples implements ExecS_Application {
+public class AsciiTable_Examples extends AbstractAppliction {
 
 	/** Application name. */
 	public final static String APP_NAME = "asciitable-examples";
@@ -36,31 +36,37 @@ public class AsciiTable_Examples implements ExecS_Application {
 	/** Application version, should be same as the version in the class JavaDoc. */
 	public final static String APP_VERSION = "v0.0.8 build 170404 (04-Apr-17) for Java 1.8";
 
-	@Override
-	public int executeApplication(String[] args) {
-		AsciiTable_Shell shell = new AsciiTable_Shell();
-		shell.atsh.parseLine("all");
-		return 0;
+	/**
+	 * Creates the example object.
+	 */
+	public AsciiTable_Examples(){
+		super(APP_NAME, ApoCliParser.defaultParser(), null, null, null);
 	}
 
 	@Override
-	public String getAppName() {
+	public void runApplication() {
+		AsciiTable_Shell shell = new AsciiTable_Shell();
+		shell.atsh.runCommand("all");
+	}
+
+	@Override
+	public String getName() {
 		return APP_NAME;
 	}
 
 	@Override
-	public String getAppDescription() {
+	public String getDescription() {
 		return "All AsciiTable Examples";
 	}
 
 	@Override
-	public String getAppVersion() {
+	public String getVersion() {
 		return APP_VERSION;
 	}
 
 	@Override
-	public ApplicationOption<?>[] getAppOptions() {
-		return null;
+	public String getDisplayName() {
+		return APP_DISPLAY_NAME;
 	}
 
 }

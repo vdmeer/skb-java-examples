@@ -17,17 +17,15 @@ package de.vandermeer.skb.examples.asciiparagraph;
 
 import java.util.ArrayList;
 
-import de.vandermeer.asciithemes.a7.A7_Grids;
-import de.vandermeer.execs.ExecS_Application;
-import de.vandermeer.execs.options.ApplicationOption;
-import de.vandermeer.skb.base.managers.MessageMgr;
-import de.vandermeer.skb.base.shell.AbstractCommandInterpreter;
-import de.vandermeer.skb.base.shell.Ci_Exit;
-import de.vandermeer.skb.base.shell.Ci_HelpTable;
-import de.vandermeer.skb.base.shell.LineParser;
-import de.vandermeer.skb.base.shell.SkbShell;
-import de.vandermeer.skb.base.shell.SkbShellCommandCategory;
-import de.vandermeer.skb.base.shell.SkbShellFactory;
+import de.vandermeer.execs.AbstractAppliction;
+import de.vandermeer.shell.SkbShell;
+import de.vandermeer.shell.commands.simple.SimpleBye;
+import de.vandermeer.shell.commands.simple.SimpleExampleRunner;
+import de.vandermeer.shell.commands.simple.SimpleExit;
+import de.vandermeer.shell.commands.simple.SimpleH;
+import de.vandermeer.shell.commands.simple.SimpleHelp;
+import de.vandermeer.shell.commands.simple.SimpleQM;
+import de.vandermeer.shell.commands.simple.SimpleQuit;
 import de.vandermeer.skb.examples.asciiparagraph.examples.AP_00_Getting_Started;
 import de.vandermeer.skb.examples.asciiparagraph.examples.AP_00b_Width_Behavior;
 import de.vandermeer.skb.examples.asciiparagraph.examples.AP_01a_WS_Behavior_Simple;
@@ -44,8 +42,7 @@ import de.vandermeer.skb.examples.asciiparagraph.examples.AP_08a_Frames;
 import de.vandermeer.skb.examples.asciiparagraph.examples.AP_08b_Frames_Doc;
 import de.vandermeer.skb.examples.asciiparagraph.examples.AP_09a_TargetTranslators_LaTeX;
 import de.vandermeer.skb.examples.asciiparagraph.examples.AP_09b_TargetTranslators_HTML;
-import de.vandermeer.skb.interfaces.StandardExampleAsCmd;
-import de.vandermeer.skb.interfaces.StandardExampleRunner;
+import de.vandermeer.skb.interfaces.application.ApoCliParser;
 
 /**
  * Examples for using AsciiParagraph implemented as an SKB shell.
@@ -54,7 +51,7 @@ import de.vandermeer.skb.interfaces.StandardExampleRunner;
  * @version    v0.0.8 build 170404 (04-Apr-17) for Java 1.8
  * @since      v0.0.7
  */
-public class AsciiParagraph_Shell implements ExecS_Application {
+public class AsciiParagraph_Shell extends AbstractAppliction {
 
 	/** Application name. */
 	public final static String APP_NAME = "asciiparagraph-shell";
@@ -75,103 +72,70 @@ public class AsciiParagraph_Shell implements ExecS_Application {
 	 * Returns a new shell.
 	 */
 	public AsciiParagraph_Shell(){
-		this.atsh = SkbShellFactory.newShell(APP_NAME, true);
+		super(APP_NAME, ApoCliParser.defaultParser(), null, null, null);
+		this.atsh = new SkbShell(APP_NAME, APP_DISPLAY_NAME, APP_VERSION, this.getDescription());
 
-		this.atsh.addCommandInterpreter(new Ci_Exit());
-		this.atsh.addCommandInterpreter(new Ci_HelpTable(atsh, A7_Grids.minusBarPlusEquals()));
+		this.atsh.addCommand(new SimpleH(ShellCategories.STD));
+		this.atsh.addCommand(new SimpleHelp(ShellCategories.STD));
+		this.atsh.addCommand(new SimpleQM(ShellCategories.STD));
 
-		this.addCommand(ShellStatics.BASIC_COMMANDS, new AP_00_Getting_Started());
+		this.atsh.addCommand(new SimpleExit(ShellCategories.STD));
+		this.atsh.addCommand(new SimpleQuit(ShellCategories.STD));
+		this.atsh.addCommand(new SimpleBye(ShellCategories.STD));
 
-		this.addCommand(ShellStatics.BASIC_COMMANDS, new AP_00b_Width_Behavior());
+//		this.atsh.addCommandInterpreter(new Ci_HelpTable(atsh, A7_Grids.minusBarPlusEquals()));
 
-		this.addCommand(ShellStatics.BASIC_COMMANDS, new AP_01a_WS_Behavior_Simple());
-		this.addCommand(ShellStatics.BASIC_COMMANDS, new AP_01b_WS_Behavior_More());
-		this.addCommand(ShellStatics.BASIC_COMMANDS, new AP_01c_ConditionalLineBreak());
-		this.addCommand(ShellStatics.BASIC_COMMANDS, new AP_01d_Inner_WS());
+		this.atsh.addCommand(new SimpleExampleRunner(new AP_00_Getting_Started(), ShellCategories.BASICS));
 
-		this.addCommand(ShellStatics.BASIC_COMMANDS, new AP_02_Alignment_Behavior());
+		this.atsh.addCommand(new SimpleExampleRunner(new AP_00b_Width_Behavior(), ShellCategories.BASICS));
 
-		this.addCommand(ShellStatics.BASIC_COMMANDS, new AP_03_Format_Behavior());
+		this.atsh.addCommand(new SimpleExampleRunner(new AP_01a_WS_Behavior_Simple(), ShellCategories.BASICS));
+		this.atsh.addCommand(new SimpleExampleRunner(new AP_01b_WS_Behavior_More(), ShellCategories.BASICS));
+		this.atsh.addCommand(new SimpleExampleRunner(new AP_01c_ConditionalLineBreak(), ShellCategories.BASICS));
+		this.atsh.addCommand(new SimpleExampleRunner(new AP_01d_Inner_WS(), ShellCategories.BASICS));
 
-		this.addCommand(ShellStatics.BASIC_COMMANDS, new AP_04_Left_Text_Margin());
-		this.addCommand(ShellStatics.BASIC_COMMANDS, new AP_05_Right_Text_Margin());
+		this.atsh.addCommand(new SimpleExampleRunner(new AP_02_Alignment_Behavior(), ShellCategories.BASICS));
 
-		this.addCommand(ShellStatics.BASIC_COMMANDS, new AP_06_LineStartEnd_Behavior());
-		this.addCommand(ShellStatics.BASIC_COMMANDS, new AP_07_InclusiveWidth());
+		this.atsh.addCommand(new SimpleExampleRunner(new AP_03_Format_Behavior(), ShellCategories.BASICS));
 
-		this.addCommand(ShellStatics.BASIC_COMMANDS, new AP_08a_Frames());
-		this.addCommand(ShellStatics.BASIC_COMMANDS, new AP_08b_Frames_Doc());
+		this.atsh.addCommand(new SimpleExampleRunner(new AP_04_Left_Text_Margin(), ShellCategories.BASICS));
+		this.atsh.addCommand(new SimpleExampleRunner(new AP_05_Right_Text_Margin(), ShellCategories.BASICS));
 
-		this.addCommand(ShellStatics.BASIC_COMMANDS, new AP_09a_TargetTranslators_LaTeX());
-		this.addCommand(ShellStatics.BASIC_COMMANDS, new AP_09b_TargetTranslators_HTML());
+		this.atsh.addCommand(new SimpleExampleRunner(new AP_06_LineStartEnd_Behavior(), ShellCategories.BASICS));
+		this.atsh.addCommand(new SimpleExampleRunner(new AP_07_InclusiveWidth(), ShellCategories.BASICS));
 
-		this.atsh.addCommandInterpreter(new Example_All(this.atsh, this.commands));
+		this.atsh.addCommand(new SimpleExampleRunner(new AP_08a_Frames(), ShellCategories.BASICS));
+		this.atsh.addCommand(new SimpleExampleRunner(new AP_08b_Frames_Doc(), ShellCategories.BASICS));
+
+		this.atsh.addCommand(new SimpleExampleRunner(new AP_09a_TargetTranslators_LaTeX(), ShellCategories.BASICS));
+		this.atsh.addCommand(new SimpleExampleRunner(new AP_09b_TargetTranslators_HTML(), ShellCategories.BASICS));
+
+		this.atsh.addCommand(new Cmd_AllExamples(this.atsh.getCommands(), ShellCategories.BASICS));
 	}
 
 	@Override
-	public int executeApplication(String[] args) {
-		return this.atsh.runShell();
+	public void runApplication() {
+		this.atsh.runShell();
 	}
 
 	@Override
-	public String getAppName() {
+	public String getName() {
 		return APP_NAME;
 	}
 
 	@Override
-	public String getAppDisplayName() {
+	public String getDisplayName() {
 		return APP_DISPLAY_NAME;
 	}
 
 	@Override
-	public void appHelpScreen(){
-		System.out.println();
-		System.out.println("The AsciiParagraph Example Shell");
-	}
-
-	@Override
-	public String getAppDescription() {
+	public String getDescription() {
 		return "The AsciiParagraph Example Shell";
 	}
 
 	@Override
-	public String getAppVersion() {
+	public String getVersion() {
 		return APP_VERSION;
 	}
 
-	@Override
-	public ApplicationOption<?>[] getAppOptions() {
-		return null;
-	}
-
-	/**
-	 * Adds a new command for an example.
-	 * @param category the example category
-	 * @param example the example to add
-	 */
-	protected final void addCommand(SkbShellCommandCategory category, StandardExampleAsCmd example){
-		this.commands.add(example.getCmd());
-		this.atsh.addCommandInterpreter(this.createCmd(category, example));
-	}
-
-	/**
-	 * Creates a new command for the example shell
-	 * @param category command category
-	 * @param example the example to execute
-	 * @return new command
-	 */
-	public AbstractCommandInterpreter createCmd(SkbShellCommandCategory category, StandardExampleAsCmd example){
-		return new AbstractCommandInterpreter(SkbShellFactory.newCommand(example.getCmd(), category, example.getDescription(), null)) {
-			@Override
-			public int interpretCommand(String command, LineParser lp, MessageMgr mm) {
-				if(command.equals(example.getCmd())){
-					StandardExampleRunner ser = new StandardExampleRunner() {};
-					System.out.println("\n\n");
-					ser.runExampleWithCode(example);
-					return 0;
-				}
-				return -1;
-			}
-		};
-	}
 }

@@ -16,8 +16,8 @@
 package de.vandermeer.skb.examples.asciiparagraph;
 
 import de.vandermeer.asciiparagraph.AsciiParagraph;
-import de.vandermeer.execs.ExecS_Application;
-import de.vandermeer.execs.options.ApplicationOption;
+import de.vandermeer.execs.AbstractAppliction;
+import de.vandermeer.skb.interfaces.application.ApoCliParser;
 
 /**
  * Prints all examples for using {@link AsciiParagraph} implemented in the {@link AsciiParagraph_Shell}.
@@ -26,7 +26,7 @@ import de.vandermeer.execs.options.ApplicationOption;
  * @version    v0.0.8 build 170404 (04-Apr-17) for Java 1.8
  * @since      v0.0.8
  */
-public class AsciiParagraph_Examples implements ExecS_Application {
+public class AsciiParagraph_Examples extends AbstractAppliction {
 
 	/** Application name. */
 	public final static String APP_NAME = "asciiparagraph-examples";
@@ -37,31 +37,37 @@ public class AsciiParagraph_Examples implements ExecS_Application {
 	/** Application version, should be same as the version in the class JavaDoc. */
 	public final static String APP_VERSION = "v0.0.8 build 170404 (04-Apr-17) for Java 1.8";
 
-	@Override
-	public int executeApplication(String[] args) {
-		AsciiParagraph_Shell shell = new AsciiParagraph_Shell();
-		shell.atsh.parseLine("all");
-		return 0;
+	/**
+	 * Creates the example object
+	 */
+	public AsciiParagraph_Examples(){
+		super(APP_NAME, ApoCliParser.defaultParser(), null, null, null);
 	}
 
 	@Override
-	public String getAppName() {
+	public void runApplication() {
+		AsciiParagraph_Shell shell = new AsciiParagraph_Shell();
+		shell.atsh.runCommand("all");
+	}
+
+	@Override
+	public String getName() {
 		return APP_NAME;
 	}
 
 	@Override
-	public String getAppDescription() {
+	public String getDescription() {
 		return "All AsciiParagraph Examples";
 	}
 
 	@Override
-	public String getAppVersion() {
+	public String getVersion() {
 		return APP_VERSION;
 	}
 
 	@Override
-	public ApplicationOption<?>[] getAppOptions() {
-		return null;
+	public String getDisplayName() {
+		return APP_DISPLAY_NAME;
 	}
 
 }

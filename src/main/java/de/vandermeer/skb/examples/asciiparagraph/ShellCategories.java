@@ -15,8 +15,7 @@
 
 package de.vandermeer.skb.examples.asciiparagraph;
 
-import de.vandermeer.skb.base.shell.SkbShellCommandCategory;
-import de.vandermeer.skb.base.shell.SkbShellFactory;
+import de.vandermeer.skb.interfaces.shell.CmdCategory;
 
 /**
  * Static definitions for {@link AsciiParagraph_Shell}.
@@ -25,12 +24,27 @@ import de.vandermeer.skb.base.shell.SkbShellFactory;
  * @version    v0.0.8 build 170404 (04-Apr-17) for Java 1.8
  * @since      v0.0.7
  */
-public class ShellStatics {
+public class ShellCategories {
 
 	/** A category for paragraph width example commands. */
-	public static SkbShellCommandCategory WIDTH_COMMANDS = SkbShellFactory.newCategory("AsciiParagraph Width", "examples for paragraph width options");
+	public static CmdCategory WIDTH = CmdCategory.create(
+			"width",
+			"AsciiParagraph Width",
+			"examples for paragraph width options"
+	);
 
 	/** A category for basic paragraph example commands. */
-	public static SkbShellCommandCategory BASIC_COMMANDS = SkbShellFactory.newCategory("AsciiParagraph Basic", "basic paragraph examples");
+	public static CmdCategory BASICS = CmdCategory.create(
+			"basic",
+			"AsciiParagraph Basic",
+			"basic paragraph examples"
+	);
+
+	/** A category for standard commands. */
+	public static CmdCategory STD = CmdCategory.create(
+			"standard",
+			"Standard",
+			"Standard shell commands"
+	);
 
 }

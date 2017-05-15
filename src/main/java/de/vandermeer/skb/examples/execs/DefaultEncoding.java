@@ -15,9 +15,9 @@
 
 package de.vandermeer.skb.examples.execs;
 
-import de.vandermeer.execs.ExecS_Application;
-import de.vandermeer.execs.options.ApplicationOption;
-import de.vandermeer.skb.interfaces.MessageConsole;
+import de.vandermeer.execs.AbstractAppliction;
+import de.vandermeer.skb.interfaces.application.ApoCliParser;
+import de.vandermeer.skb.interfaces.console.MessageConsole;
 
 /**
  * Example for console utilities showing console default encoding.
@@ -26,7 +26,7 @@ import de.vandermeer.skb.interfaces.MessageConsole;
  * @version    v0.0.8 build 170404 (04-Apr-17) for Java 1.8
  * @since      v0.0.1
  */
-public class DefaultEncoding implements ExecS_Application {
+public class DefaultEncoding extends AbstractAppliction {
 
 	/** Application name. */
 	public final static String APP_NAME = "default-encoding";
@@ -37,41 +37,37 @@ public class DefaultEncoding implements ExecS_Application {
 	/** Application version, should be same as the version in the class JavaDoc. */
 	public final static String APP_VERSION = "v0.0.8 build 170404 (04-Apr-17) for Java 1.8";
 
+	/**
+	 * Creates the example object.
+	 */
+	public DefaultEncoding(){
+		super(APP_NAME, ApoCliParser.defaultParser(), null, null, null);
+	}
+
 	@Override
-	public int executeApplication(String[] arg0) {
+	public void runApplication() {
 		System.out.println(MessageConsole.getDefaultEncoding());
 		System.out.println();
-		return 0;
+		return;
 	}
 
 	@Override
-	public void appHelpScreen() {
-		System.out.println("Prints the default encoding.");
-		System.out.println();
-	}
-
-	@Override
-	public String getAppName() {
+	public String getName() {
 		return APP_NAME;
 	}
 
 	@Override
-	public String getAppDisplayName(){
+	public String getDisplayName(){
 		return APP_DISPLAY_NAME;
 	}
 
 	@Override
-	public String getAppDescription() {
+	public String getDescription() {
 		return "Prints the default encoding.";
 	}
 
 	@Override
-	public ApplicationOption<?>[] getAppOptions() {
-		return null;
-	}
-
-	@Override
-	public String getAppVersion() {
+	public String getVersion() {
 		return APP_VERSION;
 	}
 }

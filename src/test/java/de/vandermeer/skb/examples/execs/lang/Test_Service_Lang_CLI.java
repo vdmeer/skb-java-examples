@@ -20,7 +20,7 @@ import org.junit.Test;
 import de.vandermeer.skb.examples.execs.ExamplesExecS;
 
 /**
- * Tests for {@link Application_Lang_CLI}.
+ * Tests for {@link Application_Lang}.
  *
  * @author     Sven van der Meer &lt;vdmeer.sven@mykolab.com&gt;
  * @version    v0.0.8 build 170404 (04-Apr-17) for Java 1.8
@@ -30,27 +30,27 @@ public class Test_Service_Lang_CLI {
 
 	@Test
 	public void test_Service(){
-		Application_Lang_CLI svc = null;
+		Application_Lang svc = null;
 
-		svc = new Application_Lang_CLI();
+		svc = new Application_Lang();
 		svc.executeApplication(new String[]{});
 
-		svc = new Application_Lang_CLI();
+		svc = new Application_Lang();
 		svc.executeApplication(new String[]{
 				"-g"
 		});
 
-		svc = new Application_Lang_CLI();
+		svc = new Application_Lang();
 		svc.executeApplication(new String[]{
 				"-f"
 		});
 
-		svc = new Application_Lang_CLI();
+		svc = new Application_Lang();
 		svc.executeApplication(new String[]{
 				"-e"
 		});
 
-		svc = new Application_Lang_CLI();
+		svc = new Application_Lang();
 		svc.executeApplication(new String[]{
 				"-f", "-e", "-g"
 		});
@@ -62,7 +62,7 @@ public class Test_Service_Lang_CLI {
 	public void test_ServiceHelp(){
 		ExamplesExecS execs = new ExamplesExecS();
 		execs.execute(new String[]{
-				Application_Lang_CLI.class.getName(),
+				Application_Lang.class.getName(),
 				"--help"
 		});
 	}
