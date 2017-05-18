@@ -19,13 +19,12 @@ import java.util.ArrayList;
 
 import de.vandermeer.execs.AbstractAppliction;
 import de.vandermeer.shell.SkbShell;
-import de.vandermeer.shell.commands.simple.SimpleBye;
-import de.vandermeer.shell.commands.simple.SimpleExampleRunner;
-import de.vandermeer.shell.commands.simple.SimpleExit;
-import de.vandermeer.shell.commands.simple.SimpleH;
-import de.vandermeer.shell.commands.simple.SimpleHelp;
-import de.vandermeer.shell.commands.simple.SimpleQM;
-import de.vandermeer.shell.commands.simple.SimpleQuit;
+import de.vandermeer.shell.commands.simple.Cmd_ExampleRunner;
+import de.vandermeer.shell.commands.standard.Cmd_HelpSetList;
+import de.vandermeer.shell.commands.standard.Cmd_HelpSetTable;
+import de.vandermeer.shell.commands.standard.Cmd_Bye;
+import de.vandermeer.shell.commands.standard.Cmd_Exit;
+import de.vandermeer.shell.commands.standard.Cmd_Quit;
 import de.vandermeer.skb.examples.asciitable.examples.AT_00_Getting_Started;
 import de.vandermeer.skb.examples.asciitable.examples.AT_00b_WidthBehavior;
 import de.vandermeer.skb.examples.asciitable.examples.AT_01b_1Column;
@@ -90,56 +89,63 @@ public final class AsciiTable_Shell extends AbstractAppliction {
 		super(APP_NAME, ApoCliParser.defaultParser(), null, null, null);
 		this.atsh = new SkbShell(APP_NAME, APP_DISPLAY_NAME, APP_VERSION, this.getDescription());
 
-		this.atsh.addCommand(new SimpleH(ShellCategories.STD));
-		this.atsh.addCommand(new SimpleHelp(ShellCategories.STD));
-		this.atsh.addCommand(new SimpleQM(ShellCategories.STD));
+		this.atsh.addCommand(
+				new Cmd_HelpSetTable(
+						ShellCategories.STD,
+						this.atsh.getCommands()
+				)
+		);
+		this.atsh.addCommand(
+				new Cmd_HelpSetList(
+						ShellCategories.STD,
+						this.atsh.getCommands()
+				)
+		);
 
-		this.atsh.addCommand(new SimpleExit(ShellCategories.STD));
-		this.atsh.addCommand(new SimpleQuit(ShellCategories.STD));
-		this.atsh.addCommand(new SimpleBye(ShellCategories.STD));
+		this.atsh.addCommand(new Cmd_Exit(ShellCategories.STD));
+		this.atsh.addCommand(new Cmd_Quit(ShellCategories.STD));
+		this.atsh.addCommand(new Cmd_Bye(ShellCategories.STD));
 
-//		this.atsh.addCommandInterpreter(new Ci_HelpTable(atsh, A7_Grids.minusBarPlusEquals()));
+		this.atsh.addCommand(new Cmd_ExampleRunner(new AT_00_Getting_Started(), ShellCategories.BASIC));
+		this.atsh.addCommand(new Cmd_ExampleRunner(new AT_00b_WidthBehavior(), ShellCategories.WIDTH));
 
-		this.atsh.addCommand(new SimpleExampleRunner(new AT_00_Getting_Started(), ShellCategories.BASIC));
-		this.atsh.addCommand(new SimpleExampleRunner(new AT_00b_WidthBehavior(), ShellCategories.WIDTH));
+		this.atsh.addCommand(new Cmd_ExampleRunner(new AT_01b_1Column(), ShellCategories.COLUMNS));
+		this.atsh.addCommand(new Cmd_ExampleRunner(new AT_01c_2Columns(), ShellCategories.COLUMNS));
+		this.atsh.addCommand(new Cmd_ExampleRunner(new AT_01d_3Columns(), ShellCategories.COLUMNS));
+		this.atsh.addCommand(new Cmd_ExampleRunner(new AT_01e_4Columns(), ShellCategories.COLUMNS));
+		this.atsh.addCommand(new Cmd_ExampleRunner(new AT_01f_5Columns(), ShellCategories.COLUMNS));
 
-		this.atsh.addCommand(new SimpleExampleRunner(new AT_01b_1Column(), ShellCategories.COLUMNS));
-		this.atsh.addCommand(new SimpleExampleRunner(new AT_01c_2Columns(), ShellCategories.COLUMNS));
-		this.atsh.addCommand(new SimpleExampleRunner(new AT_01d_3Columns(), ShellCategories.COLUMNS));
-		this.atsh.addCommand(new SimpleExampleRunner(new AT_01e_4Columns(), ShellCategories.COLUMNS));
-		this.atsh.addCommand(new SimpleExampleRunner(new AT_01f_5Columns(), ShellCategories.COLUMNS));
+		this.atsh.addCommand(new Cmd_ExampleRunner(new AT_02_ColSpan(), ShellCategories.COLUMNS));
 
-		this.atsh.addCommand(new SimpleExampleRunner(new AT_02_ColSpan(), ShellCategories.COLUMNS));
+		this.atsh.addCommand(new Cmd_ExampleRunner(new AT_03_AlignmentOptions(), ShellCategories.COLUMNS_CONTENT));
+		this.atsh.addCommand(new Cmd_ExampleRunner(new AT_03a_AlignmentTable(), ShellCategories.COLUMNS_CONTENT));
+		this.atsh.addCommand(new Cmd_ExampleRunner(new AT_03b_AlignmentRow(), ShellCategories.COLUMNS_CONTENT));
+		this.atsh.addCommand(new Cmd_ExampleRunner(new AT_03c_AlignmentCell(), ShellCategories.COLUMNS_CONTENT));
 
-		this.atsh.addCommand(new SimpleExampleRunner(new AT_03_AlignmentOptions(), ShellCategories.COLUMNS_CONTENT));
-		this.atsh.addCommand(new SimpleExampleRunner(new AT_03a_AlignmentTable(), ShellCategories.COLUMNS_CONTENT));
-		this.atsh.addCommand(new SimpleExampleRunner(new AT_03b_AlignmentRow(), ShellCategories.COLUMNS_CONTENT));
-		this.atsh.addCommand(new SimpleExampleRunner(new AT_03c_AlignmentCell(), ShellCategories.COLUMNS_CONTENT));
+		this.atsh.addCommand(new Cmd_ExampleRunner(new AT_04a_Padding_Table(), ShellCategories.PADDING));
+		this.atsh.addCommand(new Cmd_ExampleRunner(new AT_04b_Padding_Row(), ShellCategories.PADDING));
+		this.atsh.addCommand(new Cmd_ExampleRunner(new AT_04c_Padding_Cell(), ShellCategories.PADDING));
 
-		this.atsh.addCommand(new SimpleExampleRunner(new AT_04a_Padding_Table(), ShellCategories.PADDING));
-		this.atsh.addCommand(new SimpleExampleRunner(new AT_04b_Padding_Row(), ShellCategories.PADDING));
-		this.atsh.addCommand(new SimpleExampleRunner(new AT_04c_Padding_Cell(), ShellCategories.PADDING));
+		this.atsh.addCommand(new Cmd_ExampleRunner(new AT_05_MarginBehavior(), ShellCategories.MARGINS));
 
-		this.atsh.addCommand(new SimpleExampleRunner(new AT_05_MarginBehavior(), ShellCategories.MARGINS));
+		this.atsh.addCommand(new Cmd_ExampleRunner(new AT_06a_Grids(), ShellCategories.THEME));
+		this.atsh.addCommand(new Cmd_ExampleRunner(new AT_06b_GridRuleStyle(), ShellCategories.THEME));
+		this.atsh.addCommand(new Cmd_ExampleRunner(new AT_06c_GridThemes(), ShellCategories.THEME));
+		this.atsh.addCommand(new Cmd_ExampleRunner(new AT_06d_NewGrid(), ShellCategories.THEME));
 
-		this.atsh.addCommand(new SimpleExampleRunner(new AT_06a_Grids(), ShellCategories.THEME));
-		this.atsh.addCommand(new SimpleExampleRunner(new AT_06b_GridRuleStyle(), ShellCategories.THEME));
-		this.atsh.addCommand(new SimpleExampleRunner(new AT_06c_GridThemes(), ShellCategories.THEME));
-		this.atsh.addCommand(new SimpleExampleRunner(new AT_06d_NewGrid(), ShellCategories.THEME));
+		this.atsh.addCommand(new Cmd_ExampleRunner(new AT_07a_Width_AbsoluteEven(), ShellCategories.WIDTH));
+		this.atsh.addCommand(new Cmd_ExampleRunner(new AT_07b_Width_Fixed(), ShellCategories.WIDTH));
+		this.atsh.addCommand(new Cmd_ExampleRunner(new AT_07c_LongestLine(), ShellCategories.WIDTH));
+		this.atsh.addCommand(new Cmd_ExampleRunner(new AT_07d_LongestWord(), ShellCategories.WIDTH));
+		this.atsh.addCommand(new Cmd_ExampleRunner(new AT_07e_LongestWordMax(), ShellCategories.WIDTH));
+		this.atsh.addCommand(new Cmd_ExampleRunner(new AT_07f_LongestWordMin(), ShellCategories.WIDTH));
 
-		this.atsh.addCommand(new SimpleExampleRunner(new AT_07a_Width_AbsoluteEven(), ShellCategories.WIDTH));
-		this.atsh.addCommand(new SimpleExampleRunner(new AT_07b_Width_Fixed(), ShellCategories.WIDTH));
-		this.atsh.addCommand(new SimpleExampleRunner(new AT_07c_LongestLine(), ShellCategories.WIDTH));
-		this.atsh.addCommand(new SimpleExampleRunner(new AT_07d_LongestWord(), ShellCategories.WIDTH));
-		this.atsh.addCommand(new SimpleExampleRunner(new AT_07e_LongestWordMax(), ShellCategories.WIDTH));
-		this.atsh.addCommand(new SimpleExampleRunner(new AT_07f_LongestWordMin(), ShellCategories.WIDTH));
+		this.atsh.addCommand(new Cmd_ExampleRunner(new AT_08a_TargetTranslator_Latex(), ShellCategories.TRANSLATORS));
+		this.atsh.addCommand(new Cmd_ExampleRunner(new AT_08b_TargetTranslator_HTML(), ShellCategories.TRANSLATORS));
 
-		this.atsh.addCommand(new SimpleExampleRunner(new AT_08a_TargetTranslator_Latex(), ShellCategories.TRANSLATORS));
-		this.atsh.addCommand(new SimpleExampleRunner(new AT_08b_TargetTranslator_HTML(), ShellCategories.TRANSLATORS));
-
-		this.atsh.addCommand(new SimpleExampleRunner(new AT_09a_URIs(), ShellCategories.MISC));
-		this.atsh.addCommand(new SimpleExampleRunner(new AT_09b_ConditionalLinebreak(), ShellCategories.MISC));
-		this.atsh.addCommand(new SimpleExampleRunner(new AT_09c_ListWithLinebreaks(), ShellCategories.MISC));
+		this.atsh.addCommand(new Cmd_ExampleRunner(new AT_09a_URIs(), ShellCategories.MISC));
+		this.atsh.addCommand(new Cmd_ExampleRunner(new AT_09b_ConditionalLinebreak(), ShellCategories.MISC));
+		this.atsh.addCommand(new Cmd_ExampleRunner(new AT_09c_ListWithLinebreaks(), ShellCategories.MISC));
 
 		this.atsh.addCommand(new Cmd_AllExamples(this.atsh.getCommands(), ShellCategories.ALL));
 	}

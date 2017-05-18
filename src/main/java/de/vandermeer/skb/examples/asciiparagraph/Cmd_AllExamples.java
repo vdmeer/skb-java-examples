@@ -48,7 +48,7 @@ public class Cmd_AllExamples extends AbstractSimpleCmd {
 	@Override
 	public int executeCommand() {
 		for(CmdBase cmd : this.set.sortedList()){
-			if(cmd.getName()!=this.getName()){
+			if(cmd.getName()!=this.getName() && cmd.getCategory().getName()!="standard"){
 				cmd.executeCommand();
 			}
 		}

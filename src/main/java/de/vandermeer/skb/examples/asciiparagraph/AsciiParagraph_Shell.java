@@ -19,13 +19,13 @@ import java.util.ArrayList;
 
 import de.vandermeer.execs.AbstractAppliction;
 import de.vandermeer.shell.SkbShell;
-import de.vandermeer.shell.commands.simple.SimpleBye;
-import de.vandermeer.shell.commands.simple.SimpleExampleRunner;
-import de.vandermeer.shell.commands.simple.SimpleExit;
-import de.vandermeer.shell.commands.simple.SimpleH;
-import de.vandermeer.shell.commands.simple.SimpleHelp;
-import de.vandermeer.shell.commands.simple.SimpleQM;
-import de.vandermeer.shell.commands.simple.SimpleQuit;
+import de.vandermeer.shell.commands.simple.Cmd_ExampleRunner;
+import de.vandermeer.shell.commands.standard.Cmd_Bye;
+import de.vandermeer.shell.commands.standard.Cmd_Exit;
+import de.vandermeer.shell.commands.standard.Cmd_HelpSetList;
+import de.vandermeer.shell.commands.standard.Cmd_HelpSetTable;
+import de.vandermeer.shell.commands.standard.Cmd_Quit;
+import de.vandermeer.shell.commands.standard.Cmd_Script;
 import de.vandermeer.skb.examples.asciiparagraph.examples.AP_00_Getting_Started;
 import de.vandermeer.skb.examples.asciiparagraph.examples.AP_00b_Width_Behavior;
 import de.vandermeer.skb.examples.asciiparagraph.examples.AP_01a_WS_Behavior_Simple;
@@ -75,40 +75,49 @@ public class AsciiParagraph_Shell extends AbstractAppliction {
 		super(APP_NAME, ApoCliParser.defaultParser(), null, null, null);
 		this.atsh = new SkbShell(APP_NAME, APP_DISPLAY_NAME, APP_VERSION, this.getDescription());
 
-		this.atsh.addCommand(new SimpleH(ShellCategories.STD));
-		this.atsh.addCommand(new SimpleHelp(ShellCategories.STD));
-		this.atsh.addCommand(new SimpleQM(ShellCategories.STD));
+		this.atsh.addCommand(
+				new Cmd_HelpSetTable(
+						ShellCategories.STD,
+						this.atsh.getCommands()
+				)
+		);
+		this.atsh.addCommand(
+				new Cmd_HelpSetList(
+						ShellCategories.STD,
+						this.atsh.getCommands()
+				)
+		);
 
-		this.atsh.addCommand(new SimpleExit(ShellCategories.STD));
-		this.atsh.addCommand(new SimpleQuit(ShellCategories.STD));
-		this.atsh.addCommand(new SimpleBye(ShellCategories.STD));
+		this.atsh.addCommand(new Cmd_Script(ShellCategories.STD));
 
-//		this.atsh.addCommandInterpreter(new Ci_HelpTable(atsh, A7_Grids.minusBarPlusEquals()));
+		this.atsh.addCommand(new Cmd_Exit(ShellCategories.STD));
+		this.atsh.addCommand(new Cmd_Quit(ShellCategories.STD));
+		this.atsh.addCommand(new Cmd_Bye(ShellCategories.STD));
 
-		this.atsh.addCommand(new SimpleExampleRunner(new AP_00_Getting_Started(), ShellCategories.BASICS));
+		this.atsh.addCommand(new Cmd_ExampleRunner(new AP_00_Getting_Started(), ShellCategories.BASICS));
 
-		this.atsh.addCommand(new SimpleExampleRunner(new AP_00b_Width_Behavior(), ShellCategories.BASICS));
+		this.atsh.addCommand(new Cmd_ExampleRunner(new AP_00b_Width_Behavior(), ShellCategories.BASICS));
 
-		this.atsh.addCommand(new SimpleExampleRunner(new AP_01a_WS_Behavior_Simple(), ShellCategories.BASICS));
-		this.atsh.addCommand(new SimpleExampleRunner(new AP_01b_WS_Behavior_More(), ShellCategories.BASICS));
-		this.atsh.addCommand(new SimpleExampleRunner(new AP_01c_ConditionalLineBreak(), ShellCategories.BASICS));
-		this.atsh.addCommand(new SimpleExampleRunner(new AP_01d_Inner_WS(), ShellCategories.BASICS));
+		this.atsh.addCommand(new Cmd_ExampleRunner(new AP_01a_WS_Behavior_Simple(), ShellCategories.BASICS));
+		this.atsh.addCommand(new Cmd_ExampleRunner(new AP_01b_WS_Behavior_More(), ShellCategories.BASICS));
+		this.atsh.addCommand(new Cmd_ExampleRunner(new AP_01c_ConditionalLineBreak(), ShellCategories.BASICS));
+		this.atsh.addCommand(new Cmd_ExampleRunner(new AP_01d_Inner_WS(), ShellCategories.BASICS));
 
-		this.atsh.addCommand(new SimpleExampleRunner(new AP_02_Alignment_Behavior(), ShellCategories.BASICS));
+		this.atsh.addCommand(new Cmd_ExampleRunner(new AP_02_Alignment_Behavior(), ShellCategories.BASICS));
 
-		this.atsh.addCommand(new SimpleExampleRunner(new AP_03_Format_Behavior(), ShellCategories.BASICS));
+		this.atsh.addCommand(new Cmd_ExampleRunner(new AP_03_Format_Behavior(), ShellCategories.BASICS));
 
-		this.atsh.addCommand(new SimpleExampleRunner(new AP_04_Left_Text_Margin(), ShellCategories.BASICS));
-		this.atsh.addCommand(new SimpleExampleRunner(new AP_05_Right_Text_Margin(), ShellCategories.BASICS));
+		this.atsh.addCommand(new Cmd_ExampleRunner(new AP_04_Left_Text_Margin(), ShellCategories.BASICS));
+		this.atsh.addCommand(new Cmd_ExampleRunner(new AP_05_Right_Text_Margin(), ShellCategories.BASICS));
 
-		this.atsh.addCommand(new SimpleExampleRunner(new AP_06_LineStartEnd_Behavior(), ShellCategories.BASICS));
-		this.atsh.addCommand(new SimpleExampleRunner(new AP_07_InclusiveWidth(), ShellCategories.BASICS));
+		this.atsh.addCommand(new Cmd_ExampleRunner(new AP_06_LineStartEnd_Behavior(), ShellCategories.BASICS));
+		this.atsh.addCommand(new Cmd_ExampleRunner(new AP_07_InclusiveWidth(), ShellCategories.BASICS));
 
-		this.atsh.addCommand(new SimpleExampleRunner(new AP_08a_Frames(), ShellCategories.BASICS));
-		this.atsh.addCommand(new SimpleExampleRunner(new AP_08b_Frames_Doc(), ShellCategories.BASICS));
+		this.atsh.addCommand(new Cmd_ExampleRunner(new AP_08a_Frames(), ShellCategories.BASICS));
+		this.atsh.addCommand(new Cmd_ExampleRunner(new AP_08b_Frames_Doc(), ShellCategories.BASICS));
 
-		this.atsh.addCommand(new SimpleExampleRunner(new AP_09a_TargetTranslators_LaTeX(), ShellCategories.BASICS));
-		this.atsh.addCommand(new SimpleExampleRunner(new AP_09b_TargetTranslators_HTML(), ShellCategories.BASICS));
+		this.atsh.addCommand(new Cmd_ExampleRunner(new AP_09a_TargetTranslators_LaTeX(), ShellCategories.BASICS));
+		this.atsh.addCommand(new Cmd_ExampleRunner(new AP_09b_TargetTranslators_HTML(), ShellCategories.BASICS));
 
 		this.atsh.addCommand(new Cmd_AllExamples(this.atsh.getCommands(), ShellCategories.BASICS));
 	}
