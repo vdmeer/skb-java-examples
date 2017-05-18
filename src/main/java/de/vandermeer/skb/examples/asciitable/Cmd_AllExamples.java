@@ -37,7 +37,7 @@ public class Cmd_AllExamples extends AbstractSimpleCmd {
 	/**
 	 * New command.
 	 * @param set command set
-	 * @param catgory the command's category
+	 * @param category the command's category
 	 */
 	public Cmd_AllExamples(CommandSet set, CmdCategory category){
 		super("all", "All Examples", "runs all examples", category);
