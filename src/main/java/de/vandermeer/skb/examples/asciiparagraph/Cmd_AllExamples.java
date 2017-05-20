@@ -18,9 +18,9 @@ package de.vandermeer.skb.examples.asciiparagraph;
 import org.apache.commons.lang3.Validate;
 
 import de.vandermeer.shell.commands.AbstractSimpleCmd;
-import de.vandermeer.skb.interfaces.shell.CmdBase;
-import de.vandermeer.skb.interfaces.shell.CmdCategory;
-import de.vandermeer.skb.interfaces.shell.CommandSet;
+import de.vandermeer.skb.interfaces.shell.Sh_CmdBase;
+import de.vandermeer.skb.interfaces.shell.Sh_CmdCategory;
+import de.vandermeer.skb.interfaces.shell.Sh_CommandSet;
 
 /**
  * Command for running all paragraph examples.
@@ -32,14 +32,14 @@ import de.vandermeer.skb.interfaces.shell.CommandSet;
 public class Cmd_AllExamples extends AbstractSimpleCmd {
 
 	/** Command set with all commands. */
-	protected final CommandSet set;
+	protected final Sh_CommandSet set;
 
 	/**
 	 * New command.
 	 * @param set command set
 	 * @param category the command's category
 	 */
-	public Cmd_AllExamples(CommandSet set, CmdCategory category){
+	public Cmd_AllExamples(Sh_CommandSet set, Sh_CmdCategory category){
 		super("all", "All Examples", "runs all examples", category);
 		Validate.notNull(set);
 		this.set = set;
@@ -47,7 +47,7 @@ public class Cmd_AllExamples extends AbstractSimpleCmd {
 
 	@Override
 	public int executeCommand() {
-		for(CmdBase cmd : this.set.sortedList()){
+		for(Sh_CmdBase cmd : this.set.sortedList()){
 			if(cmd.getName()!=this.getName() && cmd.getCategory().getName()!="standard"){
 				cmd.executeCommand();
 			}

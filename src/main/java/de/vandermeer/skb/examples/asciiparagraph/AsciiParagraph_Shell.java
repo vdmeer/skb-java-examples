@@ -25,7 +25,6 @@ import de.vandermeer.shell.commands.standard.Cmd_Exit;
 import de.vandermeer.shell.commands.standard.Cmd_HelpSetList;
 import de.vandermeer.shell.commands.standard.Cmd_HelpSetTable;
 import de.vandermeer.shell.commands.standard.Cmd_Quit;
-import de.vandermeer.shell.commands.standard.Cmd_Script;
 import de.vandermeer.skb.examples.asciiparagraph.examples.AP_00_Getting_Started;
 import de.vandermeer.skb.examples.asciiparagraph.examples.AP_00b_Width_Behavior;
 import de.vandermeer.skb.examples.asciiparagraph.examples.AP_01a_WS_Behavior_Simple;
@@ -87,8 +86,6 @@ public class AsciiParagraph_Shell extends AbstractAppliction {
 						this.atsh.getCommands()
 				)
 		);
-
-		this.atsh.addCommand(new Cmd_Script(ShellCategories.STD));
 
 		this.atsh.addCommand(new Cmd_Exit(ShellCategories.STD));
 		this.atsh.addCommand(new Cmd_Quit(ShellCategories.STD));

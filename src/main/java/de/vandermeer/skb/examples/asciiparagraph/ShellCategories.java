@@ -15,7 +15,7 @@
 
 package de.vandermeer.skb.examples.asciiparagraph;
 
-import de.vandermeer.skb.interfaces.shell.CmdCategory;
+import de.vandermeer.skb.interfaces.shell.Sh_CmdCategory;
 
 /**
  * Static definitions for {@link AsciiParagraph_Shell}.
@@ -27,21 +27,21 @@ import de.vandermeer.skb.interfaces.shell.CmdCategory;
 public class ShellCategories {
 
 	/** A category for paragraph width example commands. */
-	public static CmdCategory WIDTH = CmdCategory.create(
+	public static Sh_CmdCategory WIDTH = Sh_CmdCategory.create(
 			"width",
 			"AsciiParagraph Width",
 			"examples for paragraph width options"
 	);
 
 	/** A category for basic paragraph example commands. */
-	public static CmdCategory BASICS = CmdCategory.create(
+	public static Sh_CmdCategory BASICS = Sh_CmdCategory.create(
 			"basic",
 			"AsciiParagraph Basic",
 			"basic paragraph examples"
 	);
 
 	/** A category for standard commands. */
-	public static CmdCategory STD = CmdCategory.create(
+	public static Sh_CmdCategory STD = Sh_CmdCategory.create(
 			"standard",
 			"Standard",
 			"Standard shell commands"
